@@ -2,7 +2,6 @@ package com.demo.domain;
 
 import com.demo.domain.enumeration.Contract;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
@@ -15,7 +14,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 /**
  * The Employee entity.
  */
-@Schema(description = "The Employee entity.")
 @Entity
 @Table(name = "employee")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
@@ -33,7 +31,6 @@ public class Employee implements Serializable {
     /**
      * The firstname attribute.
      */
-    @Schema(description = "The firstname attribute.")
     @Column(name = "first_name")
     private String firstName;
 
@@ -57,8 +54,8 @@ public class Employee implements Serializable {
     @Column(name = "commission_pct")
     private Long commissionPct;
 
-    @Min(value = 20)
-    @Max(value = 100)
+    @Min(value = 1)
+    @Max(value = 14)
     @Column(name = "level")
     private Integer level;
 
@@ -85,7 +82,6 @@ public class Employee implements Serializable {
     /**
      * Another side of the same relationship
      */
-    @Schema(description = "Another side of the same relationship")
     @ManyToOne
     @JsonIgnoreProperties(value = { "location", "employees" }, allowSetters = true)
     private Department department;

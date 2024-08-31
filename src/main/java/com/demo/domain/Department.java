@@ -1,7 +1,6 @@
 package com.demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -39,7 +38,6 @@ public class Department implements Serializable {
     /**
      * A relationship
      */
-    @Schema(description = "A relationship")
     @OneToMany(mappedBy = "department")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "jobs", "manager", "department" }, allowSetters = true)

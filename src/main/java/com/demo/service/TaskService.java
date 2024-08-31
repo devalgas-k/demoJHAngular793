@@ -1,43 +1,45 @@
 package com.demo.service;
 
-import com.demo.domain.Task;
-import java.util.List;
+import com.demo.service.dto.TaskDTO;
 import java.util.Optional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
- * Service Interface for managing {@link Task}.
+ * Service Interface for managing {@link com.demo.domain.Task}.
  */
 public interface TaskService {
     /**
      * Save a task.
      *
-     * @param task the entity to save.
+     * @param taskDTO the entity to save.
      * @return the persisted entity.
      */
-    Task save(Task task);
+    TaskDTO save(TaskDTO taskDTO);
 
     /**
      * Updates a task.
      *
-     * @param task the entity to update.
+     * @param taskDTO the entity to update.
      * @return the persisted entity.
      */
-    Task update(Task task);
+    TaskDTO update(TaskDTO taskDTO);
 
     /**
      * Partially updates a task.
      *
-     * @param task the entity to update partially.
+     * @param taskDTO the entity to update partially.
      * @return the persisted entity.
      */
-    Optional<Task> partialUpdate(Task task);
+    Optional<TaskDTO> partialUpdate(TaskDTO taskDTO);
 
     /**
      * Get all the tasks.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    List<Task> findAll();
+    Page<TaskDTO> findAll(Pageable pageable);
 
     /**
      * Get the "id" task.
@@ -45,7 +47,7 @@ public interface TaskService {
      * @param id the id of the entity.
      * @return the entity.
      */
-    Optional<Task> findOne(Long id);
+    Optional<TaskDTO> findOne(Long id);
 
     /**
      * Delete the "id" task.

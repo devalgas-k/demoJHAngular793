@@ -24,7 +24,7 @@ type JobFormGroupContent = {
   subSalary: FormControl<IJob['subSalary']>;
   totalSalary: FormControl<IJob['totalSalary']>;
   date: FormControl<IJob['date']>;
-  code: FormControl<IJob['code']>;
+  codeCode: FormControl<IJob['codeCode']>;
   profil: FormControl<IJob['profil']>;
   profilContentType: FormControl<IJob['profilContentType']>;
   tasks: FormControl<IJob['tasks']>;
@@ -56,7 +56,7 @@ export class JobFormService {
       subSalary: new FormControl(jobRawValue.subSalary),
       totalSalary: new FormControl(jobRawValue.totalSalary),
       date: new FormControl(jobRawValue.date),
-      code: new FormControl(jobRawValue.code),
+      codeCode: new FormControl(jobRawValue.codeCode),
       profil: new FormControl(jobRawValue.profil, {
         validators: [Validators.required],
       }),

@@ -1,23 +1,23 @@
 
 entity Region {
-	regionName String pattern(/^[A-Z][a-z]+\d$/)
+    regionName String pattern(/^[A-Z][a-z]+\d$/)
 }
 
 entity Country {
-	countryName String
+    countryName String
 }
 
 // an ignored comment
 /** not an ignored comment */
 entity Location {
-	streetAddress String
-	postalCode String
-	city String
-	stateProvince String
+    streetAddress String
+    postalCode String
+    city String
+    stateProvince String
 }
 
 entity Department {
-	departmentName String required
+    departmentName String required
 }
 
 /**
@@ -56,37 +56,37 @@ entity Experience {
  * The Employee entity.
  */
 entity Employee {
-	/**
-	* The firstname attribute.
-	*/
-	firstName String
-	lastName String
+    /**
+    * The firstname attribute.
+    */
+    firstName String
+    lastName String
     email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
-	phoneNumber String
-	hireDate Instant
-	salary Long
-	commissionPct Long
-    level Integer min(20) max(100)
+    phoneNumber String
+    hireDate Instant
+    salary Long
+    commissionPct Long
+    level Integer min(1) max(14)
     contract Contract
     cv AnyBlob
 }
 
 entity Job {
-	jobTitle String unique required
-	minSalary Long required
-	maxSalary Long
+    jobTitle String unique required
+    minSalary Long required
+    maxSalary Long
     minSalary BigDecimal
     subSalary Float
     totalSalary Double
     date LocalDate
-    code UUID
+    codeCode UUID
     profil ImageBlob required
 }
 
 entity JobHistory {
-	startDate Instant
-	endDate Instant
-	language Language
+    startDate Instant
+    endDate Instant
+    language Language
     file AnyBlob
     date ZonedDateTime
     duration Duration
@@ -97,7 +97,7 @@ entity JobHistory {
  * contract am enum
  */
 enum Contract {
-    CDI("Permanent employment contract"), CDD("FIXED-TERM CONTRACTa"), FREELANCE("Freelance")
+    CDI("Permanent contract"), CDD("Fixed-term contract"), FREELANCE("Freelance")
 }
 
 enum Language {
@@ -105,19 +105,19 @@ enum Language {
 }
 
 relationship OneToOne {
-	Country{region} to Region
+    Country{region} to Region
 }
 
 relationship OneToOne {
-	Location{country} to Country
+    Location{country} to Country
 }
 
 relationship OneToOne {
-	Department{location} to Location
+    Department{location} to Location
 }
 
 relationship ManyToMany {
-	Job{task(title)} to Task{job}
+    Job{task(title)} to Task{job}
 }
 
 relationship ManyToMany {
@@ -146,34 +146,34 @@ relationship ManyToOne {
 
 // defining multiple OneToMany relationships with comments
 relationship OneToMany {
-	Employee to Job{employee}
-	/**
-	* A relationship
-	*/
-	Department to
-	/**
-	* Another side of the same relationship
-	*/
-	Employee{department}
+    Employee to Job{employee}
+    /**
+    * A relationship
+    */
+    Department to
+    /**
+    * Another side of the same relationship
+    */
+    Employee{department}
 }
 
 relationship ManyToOne {
-	Employee{manager} to Employee
+    Employee{manager} to Employee
 }
 
 // defining multiple oneToOne relationships
 relationship OneToOne {
-	JobHistory{job} to Job
-	JobHistory{department} to Department
-	JobHistory{employee} to Employee
+    JobHistory{job} to Job
+    JobHistory{department} to Department
+    JobHistory{employee} to Employee
 }
 
 // Set pagination options
 paginate JobHistory, Employee with infinite-scroll
-paginate Job with pagination
+paginate * with pagination
 
 // Use Data Transfer Objects (DTO)
-// dto * with mapstruct
+dto * with mapstruct
 
 // Set service options to all except few
 service all with serviceImpl except Employee, Job

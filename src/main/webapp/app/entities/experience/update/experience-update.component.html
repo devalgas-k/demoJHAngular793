@@ -1,0 +1,237 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-experience-heading" data-cy="ExperienceCreateUpdateHeading" jhiTranslate="demoApp.experience.home.createOrEditLabel">
+        Créer ou éditer un Experience
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.experience.title" for="field_title">Title</label>
+          <input type="text" class="form-control" name="title" id="field_title" data-cy="title" formControlName="title" />
+          <div *ngIf="editForm.get('title')!.invalid && (editForm.get('title')!.dirty || editForm.get('title')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('title')?.errors?.required" jhiTranslate="entity.validation.required">
+              Ce champ est obligatoire.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('title')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 256 }"
+            >
+              Ce champ doit faire moins de 256 caractères.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('title')?.errors?.pattern"
+              jhiTranslate="entity.validation.pattern"
+              [translateValues]="{ pattern: 'Title' }"
+            >
+              Ce champ doit suivre l'expression régulière Title.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.experience.company" for="field_company">Company</label>
+          <input type="text" class="form-control" name="company" id="field_company" data-cy="company" formControlName="company" />
+          <div *ngIf="editForm.get('company')!.invalid && (editForm.get('company')!.dirty || editForm.get('company')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('company')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('company')?.errors?.maxlength"
+              jhiTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 256 }"
+            >
+              Ce champ doit faire moins de 256 caractères.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('company')?.errors?.pattern"
+              jhiTranslate="entity.validation.pattern"
+              [translateValues]="{ pattern: 'Company' }"
+            >
+              Ce champ doit suivre l'expression régulière Company.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.experience.description" for="field_description">Description</label>
+          <textarea
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          ></textarea>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.experience.logoCompany" for="field_logoCompany">Logo Company</label>
+          <div>
+            <img
+              [src]="'data:' + editForm.get('logoCompanyContentType')!.value + ';base64,' + editForm.get('logoCompany')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('logoCompany')!.value"
+              alt="experience image"
+            />
+            <div *ngIf="editForm.get('logoCompany')!.value" class="form-text text-danger clearfix">
+              <span class="pull-start"
+                >{{ editForm.get('logoCompanyContentType')!.value }}, {{ byteSize(editForm.get('logoCompany')!.value!) }}</span
+              >
+              <button
+                type="button"
+                (click)="clearInputImage('logoCompany', 'logoCompanyContentType', 'file_logoCompany')"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_logoCompany"
+              data-cy="logoCompany"
+              (change)="setFileData($event, 'logoCompany', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="logoCompany"
+            id="field_logoCompany"
+            data-cy="logoCompany"
+            formControlName="logoCompany"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="logoCompanyContentType"
+            id="field_logoCompanyContentType"
+            formControlName="logoCompanyContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.experience.inProgress" for="field_inProgress">In Progress</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="inProgress"
+            id="field_inProgress"
+            data-cy="inProgress"
+            formControlName="inProgress"
+          />
+          <div *ngIf="editForm.get('inProgress')!.invalid && (editForm.get('inProgress')!.dirty || editForm.get('inProgress')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('inProgress')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.experience.contract" for="field_contract">Contract</label>
+          <select class="form-control" name="contract" formControlName="contract" id="field_contract" data-cy="contract">
+            <option [ngValue]="null">{{ 'demoApp.Contract.null' | translate }}</option>
+            <option *ngFor="let contract of contractValues" [value]="contract">{{ 'demoApp.Contract.' + contract | translate }}</option>
+          </select>
+          <div *ngIf="editForm.get('contract')!.invalid && (editForm.get('contract')!.dirty || editForm.get('contract')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('contract')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.experience.startDate" for="field_startDate">Start Date</label>
+          <div class="input-group">
+            <input
+              id="field_startDate"
+              data-cy="startDate"
+              type="text"
+              class="form-control"
+              name="startDate"
+              ngbDatepicker
+              #startDateDp="ngbDatepicker"
+              formControlName="startDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.experience.endDate" for="field_endDate">End Date</label>
+          <div class="input-group">
+            <input
+              id="field_endDate"
+              data-cy="endDate"
+              type="text"
+              class="form-control"
+              name="endDate"
+              ngbDatepicker
+              #endDateDp="ngbDatepicker"
+              formControlName="endDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="endDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="demoApp.experience.expertise" for="field_expertise">Expertise</label>
+          <select
+            class="form-control"
+            id="field_expertise"
+            data-cy="expertise"
+            multiple
+            name="expertise"
+            formControlName="expertise"
+            [compareWith]="compareExpertise"
+          >
+            <option [ngValue]="expertiseOption" *ngFor="let expertiseOption of expertiseSharedCollection">
+              {{ expertiseOption.title }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

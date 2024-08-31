@@ -1,0 +1,69 @@
+{
+  "applications": "*",
+  "changelogDate": "20240831044448",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "experience",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required", "pattern"],
+      "fieldValidateRulesMaxlength": "256",
+      "fieldValidateRulesPattern": "^[A-Z].*$"
+    },
+    {
+      "fieldName": "company",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "unique", "required", "pattern"],
+      "fieldValidateRulesMaxlength": "256",
+      "fieldValidateRulesPattern": "^[A-Z].*$"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "logoCompany",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "inProgress",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "contract",
+      "fieldType": "Contract",
+      "fieldTypeJavadoc": "This is a contract\\ncontract am enum",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "CDI (Permanent contract),CDD (Fixed-term contract),FREELANCE (Freelance)"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Experience",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "title",
+      "otherEntityName": "expertise",
+      "otherEntityRelationshipName": "experience",
+      "ownerSide": true,
+      "relationshipName": "expertise",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

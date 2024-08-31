@@ -48,8 +48,8 @@ public class Job implements Serializable {
     @Column(name = "date")
     private LocalDate date;
 
-    @Column(name = "code")
-    private UUID code;
+    @Column(name = "code_code")
+    private UUID codeCode;
 
     @Lob
     @Column(name = "profil", nullable = false)
@@ -162,17 +162,17 @@ public class Job implements Serializable {
         this.date = date;
     }
 
-    public UUID getCode() {
-        return this.code;
+    public UUID getCodeCode() {
+        return this.codeCode;
     }
 
-    public Job code(UUID code) {
-        this.setCode(code);
+    public Job codeCode(UUID codeCode) {
+        this.setCodeCode(codeCode);
         return this;
     }
 
-    public void setCode(UUID code) {
-        this.code = code;
+    public void setCodeCode(UUID codeCode) {
+        this.codeCode = codeCode;
     }
 
     public byte[] getProfil() {
@@ -269,7 +269,7 @@ public class Job implements Serializable {
             ", subSalary=" + getSubSalary() +
             ", totalSalary=" + getTotalSalary() +
             ", date='" + getDate() + "'" +
-            ", code='" + getCode() + "'" +
+            ", codeCode='" + getCodeCode() + "'" +
             ", profil='" + getProfil() + "'" +
             ", profilContentType='" + getProfilContentType() + "'" +
             "}";

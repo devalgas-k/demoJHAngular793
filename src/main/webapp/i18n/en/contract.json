@@ -2,8 +2,8 @@
   "demoApp": {
     "Contract": {
       "null": "",
-      "CDI": "Permanent employment contract",
-      "CDD": "FIXED-TERM CONTRACT",
+      "CDI": "Permanent contract",
+      "CDD": "Fixed-term contract",
       "FREELANCE": "Freelance"
     }
   }

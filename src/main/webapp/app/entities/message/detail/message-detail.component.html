@@ -1,0 +1,69 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="message">
+      <h2 data-cy="messageDetailsHeading"><span jhiTranslate="demoApp.message.detail.title">Message</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ message.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.message.name">Name</span></dt>
+        <dd>
+          <span>{{ message.name }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.message.email">Email</span></dt>
+        <dd>
+          <span>{{ message.email }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.message.phone">Phone</span></dt>
+        <dd>
+          <span>{{ message.phone }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.message.message">Message</span></dt>
+        <dd>
+          <span>{{ message.message }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.message.file">File</span></dt>
+        <dd>
+          <div *ngIf="message.file">
+            <a (click)="openFile(message.file, message.fileContentType)" jhiTranslate="entity.action.open">Ouvrir</a>
+            {{ message.fileContentType }}, {{ byteSize(message.file) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="demoApp.message.city">City</span></dt>
+        <dd>
+          <span>{{ message.city }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.message.otherCountry">Other Country</span></dt>
+        <dd>
+          <span>{{ message.otherCountry }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.message.date">Date</span></dt>
+        <dd>
+          <span>{{ message.date | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.message.subject">Subject</span></dt>
+        <dd>
+          <div *ngIf="message.subject">
+            <a [routerLink]="['/subject', message.subject.id, 'view']">{{ message.subject.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/message', message.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

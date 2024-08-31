@@ -1,7 +1,7 @@
 {
   "applications": "*",
   "changelogDate": "20240831042921",
-  "dto": "no",
+  "dto": "mapstruct",
   "embedded": false,
   "entityTableName": "task",
   "fields": [
@@ -22,7 +22,7 @@
   "javadoc": "Task entity.\\n@author The JHipster team.",
   "jpaMetamodelFiltering": false,
   "name": "Task",
-  "pagination": "no",
+  "pagination": "pagination",
   "readOnly": false,
   "relationships": [
     {

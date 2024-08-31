@@ -95,12 +95,7 @@
           <th scope="col"></th>
         </tr>
       </thead>
-      <tbody
-        infinite-scroll
-        (scrolled)="loadPage(page + 1)"
-        [infiniteScrollDisabled]="page - 1 >= links['last']"
-        [infiniteScrollDistance]="0"
-      >
+      <tbody>
         <tr *ngFor="let jobHistory of jobHistories; trackBy: trackId" data-cy="entityTable">
           <td>
             <a [routerLink]="['/job-history', jobHistory.id, 'view']">{{ jobHistory.id }}</a>
@@ -162,5 +157,23 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div *ngIf="jobHistories && jobHistories.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
   </div>
 </div>

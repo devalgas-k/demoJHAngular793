@@ -174,7 +174,7 @@ describe('Employee e2e test', () => {
 
       cy.get(`[data-cy="commissionPct"]`).type('25470').should('have.value', '25470');
 
-      cy.get(`[data-cy="level"]`).type('99').should('have.value', '99');
+      cy.get(`[data-cy="level"]`).type('14').should('have.value', '14');
 
       cy.get(`[data-cy="contract"]`).select('FREELANCE');
 

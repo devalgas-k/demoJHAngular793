@@ -1,43 +1,45 @@
 package com.demo.service;
 
-import com.demo.domain.Country;
-import java.util.List;
+import com.demo.service.dto.CountryDTO;
 import java.util.Optional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
- * Service Interface for managing {@link Country}.
+ * Service Interface for managing {@link com.demo.domain.Country}.
  */
 public interface CountryService {
     /**
      * Save a country.
      *
-     * @param country the entity to save.
+     * @param countryDTO the entity to save.
      * @return the persisted entity.
      */
-    Country save(Country country);
+    CountryDTO save(CountryDTO countryDTO);
 
     /**
      * Updates a country.
      *
-     * @param country the entity to update.
+     * @param countryDTO the entity to update.
      * @return the persisted entity.
      */
-    Country update(Country country);
+    CountryDTO update(CountryDTO countryDTO);
 
     /**
      * Partially updates a country.
      *
-     * @param country the entity to update partially.
+     * @param countryDTO the entity to update partially.
      * @return the persisted entity.
      */
-    Optional<Country> partialUpdate(Country country);
+    Optional<CountryDTO> partialUpdate(CountryDTO countryDTO);
 
     /**
      * Get all the countries.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    List<Country> findAll();
+    Page<CountryDTO> findAll(Pageable pageable);
 
     /**
      * Get the "id" country.
@@ -45,7 +47,7 @@ public interface CountryService {
      * @param id the id of the entity.
      * @return the entity.
      */
-    Optional<Country> findOne(Long id);
+    Optional<CountryDTO> findOne(Long id);
 
     /**
      * Delete the "id" country.

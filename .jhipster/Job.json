@@ -1,7 +1,7 @@
 {
   "applications": "*",
   "changelogDate": "20240831042923",
-  "dto": "no",
+  "dto": "mapstruct",
   "embedded": false,
   "entityTableName": "job",
   "fields": [
@@ -31,7 +31,7 @@
       "fieldType": "LocalDate"
     },
     {
-      "fieldName": "code",
+      "fieldName": "codeCode",
       "fieldType": "UUID"
     },
     {
@@ -62,5 +62,5 @@
       "relationshipType": "many-to-one"
     }
   ],
-  "service": "no"
+  "service": "serviceClass"
 }

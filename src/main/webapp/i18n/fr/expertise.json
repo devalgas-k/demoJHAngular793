@@ -1,0 +1,27 @@
+{
+  "demoApp": {
+    "expertise": {
+      "home": {
+        "title": "Expertise",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Expertise",
+        "createOrEditLabel": "Créer ou éditer un Expertise",
+        "notFound": "Aucun Expertise trouvé"
+      },
+      "created": "Un nouveau Expertise a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Expertise avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Expertise avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Expertise {{ id }} ?"
+      },
+      "detail": {
+        "title": "Expertise"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "level": "Level",
+      "experience": "Experience"
+    }
+  }
+}

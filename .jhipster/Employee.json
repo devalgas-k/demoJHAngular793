@@ -1,7 +1,7 @@
 {
   "applications": "*",
   "changelogDate": "20240831042922",
-  "dto": "no",
+  "dto": "mapstruct",
   "embedded": false,
   "entityTableName": "employee",
   "fields": [
@@ -40,14 +40,14 @@
       "fieldName": "level",
       "fieldType": "Integer",
       "fieldValidateRules": ["min", "max"],
-      "fieldValidateRulesMax": "100",
-      "fieldValidateRulesMin": "20"
+      "fieldValidateRulesMax": "14",
+      "fieldValidateRulesMin": "1"
     },
     {
       "fieldName": "contract",
       "fieldType": "Contract",
       "fieldTypeJavadoc": "This is a contract\\ncontract am enum",
-      "fieldValues": "CDI (Permanent employment contract),CDD (FIXED-TERM CONTRACT),FREELANCE (Freelance)"
+      "fieldValues": "CDI (Permanent contract),CDD (Fixed-term contract),FREELANCE (Freelance)"
     },
     {
       "fieldName": "cv",
@@ -59,7 +59,7 @@
   "javadoc": "The Employee entity.",
   "jpaMetamodelFiltering": false,
   "name": "Employee",
-  "pagination": "infinite-scroll",
+  "pagination": "pagination",
   "readOnly": false,
   "relationships": [
     {
@@ -81,5 +81,5 @@
       "relationshipType": "many-to-one"
     }
   ],
-  "service": "no"
+  "service": "serviceClass"
 }

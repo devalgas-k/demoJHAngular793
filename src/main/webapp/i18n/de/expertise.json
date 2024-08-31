@@ -1,0 +1,27 @@
+{
+  "demoApp": {
+    "expertise": {
+      "home": {
+        "title": "Expertise",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Expertise erstellen",
+        "createOrEditLabel": "Expertise erstellen oder bearbeiten",
+        "notFound": "Keine Expertise gefunden"
+      },
+      "created": "Expertise erstellt mit ID {{ param }}",
+      "updated": "Expertise aktualisiert mit ID {{ param }}",
+      "deleted": "Expertise gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Expertise {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Expertise"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "level": "Level",
+      "experience": "Experience"
+    }
+  }
+}

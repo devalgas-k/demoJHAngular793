@@ -91,6 +91,9 @@ describe('Region e2e test', () => {
             },
             {
               statusCode: 200,
+              headers: {
+                link: '<http://localhost/api/regions?page=0&size=20>; rel="last",<http://localhost/api/regions?page=0&size=20>; rel="first"',
+              },
               body: [region],
             }
           ).as('entitiesRequestInternal');

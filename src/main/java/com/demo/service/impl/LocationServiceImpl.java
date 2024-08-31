@@ -3,10 +3,13 @@ package com.demo.service.impl;
 import com.demo.domain.Location;
 import com.demo.repository.LocationRepository;
 import com.demo.service.LocationService;
-import java.util.List;
+import com.demo.service.dto.LocationDTO;
+import com.demo.service.mapper.LocationMapper;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,59 +24,56 @@ public class LocationServiceImpl implements LocationService {
 
     private final LocationRepository locationRepository;
 
-    public LocationServiceImpl(LocationRepository locationRepository) {
+    private final LocationMapper locationMapper;
+
+    public LocationServiceImpl(LocationRepository locationRepository, LocationMapper locationMapper) {
         this.locationRepository = locationRepository;
+        this.locationMapper = locationMapper;
     }
 
     @Override
-    public Location save(Location location) {
-        log.debug("Request to save Location : {}", location);
-        return locationRepository.save(location);
+    public LocationDTO save(LocationDTO locationDTO) {
+        log.debug("Request to save Location : {}", locationDTO);
+        Location location = locationMapper.toEntity(locationDTO);
+        location = locationRepository.save(location);
+        return locationMapper.toDto(location);
     }
 
     @Override
-    public Location update(Location location) {
-        log.debug("Request to update Location : {}", location);
-        return locationRepository.save(location);
+    public LocationDTO update(LocationDTO locationDTO) {
+        log.debug("Request to update Location : {}", locationDTO);
+        Location location = locationMapper.toEntity(locationDTO);
+        location = locationRepository.save(location);
+        return locationMapper.toDto(location);
     }
 
     @Override
-    public Optional<Location> partialUpdate(Location location) {
-        log.debug("Request to partially update Location : {}", location);
+    public Optional<LocationDTO> partialUpdate(LocationDTO locationDTO) {
+        log.debug("Request to partially update Location : {}", locationDTO);
 
         return locationRepository
-            .findById(location.getId())
+            .findById(locationDTO.getId())
             .map(existingLocation -> {
-                if (location.getStreetAddress() != null) {
-                    existingLocation.setStreetAddress(location.getStreetAddress());
-                }
-                if (location.getPostalCode() != null) {
-                    existingLocation.setPostalCode(location.getPostalCode());
-                }
-                if (location.getCity() != null) {
-                    existingLocation.setCity(location.getCity());
-                }
-                if (location.getStateProvince() != null) {
-                    existingLocation.setStateProvince(location.getStateProvince());
-                }
+                locationMapper.partialUpdate(existingLocation, locationDTO);
 
                 return existingLocation;
             })
-            .map(locationRepository::save);
+            .map(locationRepository::save)
+            .map(locationMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<Location> findAll() {
+    public Page<LocationDTO> findAll(Pageable pageable) {
         log.debug("Request to get all Locations");
-        return locationRepository.findAll();
+        return locationRepository.findAll(pageable).map(locationMapper::toDto);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Location> findOne(Long id) {
+    public Optional<LocationDTO> findOne(Long id) {
         log.debug("Request to get Location : {}", id);
-        return locationRepository.findById(id);
+        return locationRepository.findById(id).map(locationMapper::toDto);
     }
 
     @Override

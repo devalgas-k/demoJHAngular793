@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="expertise">
+      <h2 data-cy="expertiseDetailsHeading"><span jhiTranslate="demoApp.expertise.detail.title">Expertise</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ expertise.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.expertise.title">Title</span></dt>
+        <dd>
+          <span>{{ expertise.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.expertise.description">Description</span></dt>
+        <dd>
+          <span>{{ expertise.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.expertise.level">Level</span></dt>
+        <dd>
+          <span>{{ expertise.level }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/expertise', expertise.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -74,9 +74,9 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
-          <th scope="col" jhiSortBy="code">
+          <th scope="col" jhiSortBy="codeCode">
             <div class="d-flex">
-              <span jhiTranslate="demoApp.job.code">Code</span>
+              <span jhiTranslate="demoApp.job.codeCode">Code Code</span>
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
@@ -106,7 +106,7 @@
           <td>{{ job.subSalary }}</td>
           <td>{{ job.totalSalary }}</td>
           <td>{{ job.date | formatMediumDate }}</td>
-          <td>{{ job.code }}</td>
+          <td>{{ job.codeCode }}</td>
           <td>
             <a *ngIf="job.profil" (click)="openFile(job.profil, job.profilContentType)">
               <img [src]="'data:' + job.profilContentType + ';base64,' + job.profil" style="max-height: 30px" alt="job image" />

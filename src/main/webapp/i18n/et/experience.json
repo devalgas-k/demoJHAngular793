@@ -1,0 +1,32 @@
+{
+  "demoApp": {
+    "experience": {
+      "home": {
+        "title": "Experiences",
+        "refreshListLabel": "Värskenda nimekirja",
+        "createLabel": "Lisa uus Experience",
+        "createOrEditLabel": "Lisa või muuda Experience",
+        "notFound": "Ei leitud ühtegi Experiences"
+      },
+      "created": "Uus Experience on loodud identifikaatoriga {{ param }}",
+      "updated": "Experience identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Experience identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Experience {{ id }}?"
+      },
+      "detail": {
+        "title": "Experience"
+      },
+      "id": "ID",
+      "title": "Title",
+      "company": "Company",
+      "description": "Description",
+      "logoCompany": "Logo Company",
+      "inProgress": "In Progress",
+      "contract": "Contract",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "expertise": "Expertise"
+    }
+  }
+}

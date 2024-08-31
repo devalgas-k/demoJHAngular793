@@ -77,7 +77,7 @@ class JobGatlingTest extends Simulation {
                 , "subSalary":"0"
                 , "totalSalary":"0"
                 , "date":"2020-01-01T00:00:00.000Z"
-                , "code":null
+                , "codeCode":null
                 , "profil":null
                 }""")).asJson
             .check(status.is(201))

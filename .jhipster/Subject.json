@@ -1,0 +1,22 @@
+{
+  "applications": "*",
+  "changelogDate": "20240831044450",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "subject",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required"],
+      "fieldValidateRulesMaxlength": "256"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Subject",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

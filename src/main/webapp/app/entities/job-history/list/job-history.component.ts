@@ -6,12 +6,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { IJobHistory } from '../job-history.model';
 
-import { ITEMS_PER_PAGE } from 'app/config/pagination.constants';
+import { ITEMS_PER_PAGE, PAGE_HEADER, TOTAL_COUNT_RESPONSE_HEADER } from 'app/config/pagination.constants';
 import { ASC, DESC, SORT, ITEM_DELETED_EVENT, DEFAULT_SORT_DATA } from 'app/config/navigation.constants';
 import { EntityArrayResponseType, JobHistoryService } from '../service/job-history.service';
 import { JobHistoryDeleteDialogComponent } from '../delete/job-history-delete-dialog.component';
 import { DataUtils } from 'app/core/util/data-util.service';
-import { ParseLinks } from 'app/core/util/parse-links.service';
 
 @Component({
   selector: 'jhi-job-history',
@@ -25,30 +24,16 @@ export class JobHistoryComponent implements OnInit {
   ascending = true;
 
   itemsPerPage = ITEMS_PER_PAGE;
-  links: { [key: string]: number } = {
-    last: 0,
-  };
+  totalItems = 0;
   page = 1;
 
   constructor(
     protected jobHistoryService: JobHistoryService,
     protected activatedRoute: ActivatedRoute,
     public router: Router,
-    protected parseLinks: ParseLinks,
     protected dataUtils: DataUtils,
     protected modalService: NgbModal
   ) {}
-
-  reset(): void {
-    this.page = 1;
-    this.jobHistories = [];
-    this.load();
-  }
-
-  loadPage(page: number): void {
-    this.page = page;
-    this.load();
-  }
 
   trackId = (_index: number, item: IJobHistory): number => this.jobHistoryService.getJobHistoryIdentifier(item);
 
@@ -104,6 +89,8 @@ export class JobHistoryComponent implements OnInit {
   }
 
   protected fillComponentAttributeFromRoute(params: ParamMap, data: Data): void {
+    const page = params.get(PAGE_HEADER);
+    this.page = +(page ?? 1);
     const sort = (params.get(SORT) ?? data[DEFAULT_SORT_DATA]).split(',');
     this.predicate = sort[0];
     this.ascending = sort[1] === ASC;
@@ -116,26 +103,11 @@ export class JobHistoryComponent implements OnInit {
   }
 
   protected fillComponentAttributesFromResponseBody(data: IJobHistory[] | null): IJobHistory[] {
-    const jobHistoriesNew = this.jobHistories ?? [];
-    if (data) {
-      for (const d of data) {
-        if (jobHistoriesNew.map(op => op.id).indexOf(d.id) === -1) {
-          jobHistoriesNew.push(d);
-        }
-      }
-    }
-    return jobHistoriesNew;
+    return data ?? [];
   }
 
   protected fillComponentAttributesFromResponseHeader(headers: HttpHeaders): void {
-    const linkHeader = headers.get('link');
-    if (linkHeader) {
-      this.links = this.parseLinks.parse(linkHeader);
-    } else {
-      this.links = {
-        last: 0,
-      };
-    }
+    this.totalItems = Number(headers.get(TOTAL_COUNT_RESPONSE_HEADER));
   }
 
   protected queryBackend(page?: number, predicate?: string, ascending?: boolean): Observable<EntityArrayResponseType> {

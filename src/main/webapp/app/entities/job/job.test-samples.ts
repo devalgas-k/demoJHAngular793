@@ -27,7 +27,7 @@ export const sampleWithFullData: IJob = {
   subSalary: 38941,
   totalSalary: 6104,
   date: dayjs('2024-08-30'),
-  code: '5a42789a-1199-4dad-b77b-e9853a384a3b',
+  codeCode: '5a42789a-1199-4dad-b77b-e9853a384a3b',
   profil: '../fake-data/blob/hipster.png',
   profilContentType: 'unknown',
 };

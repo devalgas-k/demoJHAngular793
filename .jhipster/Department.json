@@ -1,7 +1,7 @@
 {
   "applications": "*",
   "changelogDate": "20240831042920",
-  "dto": "no",
+  "dto": "mapstruct",
   "embedded": false,
   "entityTableName": "department",
   "fields": [
@@ -14,7 +14,7 @@
   "fluentMethods": true,
   "jpaMetamodelFiltering": false,
   "name": "Department",
-  "pagination": "no",
+  "pagination": "pagination",
   "readOnly": false,
   "relationships": [
     {

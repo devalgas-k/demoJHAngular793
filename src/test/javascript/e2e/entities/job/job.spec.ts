@@ -53,7 +53,7 @@ describe('Job e2e test', () => {
       jobUpdatePage.setSubSalaryInput('5'),
       jobUpdatePage.setTotalSalaryInput('5'),
       jobUpdatePage.setDateInput('2000-12-31'),
-      jobUpdatePage.setCodeInput('64c99148-3908-465d-8c4a-e510e3ade974'),
+      jobUpdatePage.setCodeCodeInput('64c99148-3908-465d-8c4a-e510e3ade974'),
       jobUpdatePage.setProfilInput(absolutePath),
       // jobUpdatePage.taskSelectLastOption(),
       jobUpdatePage.employeeSelectLastOption(),

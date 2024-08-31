@@ -36,7 +36,7 @@ export class JobUpdatePage {
   subSalaryInput = element(by.id('field_subSalary'));
   totalSalaryInput = element(by.id('field_totalSalary'));
   dateInput = element(by.id('field_date'));
-  codeInput = element(by.id('field_code'));
+  codeCodeInput = element(by.id('field_codeCode'));
   profilInput = element(by.id('file_profil'));
 
   taskSelect = element(by.id('field_task'));
@@ -102,12 +102,12 @@ export class JobUpdatePage {
     return await this.dateInput.getAttribute('value');
   }
 
-  async setCodeInput(code: string): Promise<void> {
-    await this.codeInput.sendKeys(code);
+  async setCodeCodeInput(codeCode: string): Promise<void> {
+    await this.codeCodeInput.sendKeys(codeCode);
   }
 
-  async getCodeInput(): Promise<string> {
-    return await this.codeInput.getAttribute('value');
+  async getCodeCodeInput(): Promise<string> {
+    return await this.codeCodeInput.getAttribute('value');
   }
 
   async setProfilInput(profil: string): Promise<void> {

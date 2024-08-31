@@ -1,7 +1,7 @@
 {
   "applications": "*",
   "changelogDate": "20240831042924",
-  "dto": "no",
+  "dto": "mapstruct",
   "embedded": false,
   "entityTableName": "job_history",
   "fields": [
@@ -35,7 +35,7 @@
   "fluentMethods": true,
   "jpaMetamodelFiltering": false,
   "name": "JobHistory",
-  "pagination": "infinite-scroll",
+  "pagination": "pagination",
   "readOnly": false,
   "relationships": [
     {

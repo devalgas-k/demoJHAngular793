@@ -1,0 +1,27 @@
+{
+  "demoApp": {
+    "expertise": {
+      "home": {
+        "title": "Expertise",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Expertise",
+        "createOrEditLabel": "Create or edit a Expertise",
+        "notFound": "No Expertise found"
+      },
+      "created": "A new Expertise is created with identifier {{ param }}",
+      "updated": "A Expertise is updated with identifier {{ param }}",
+      "deleted": "A Expertise is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Expertise {{ id }}?"
+      },
+      "detail": {
+        "title": "Expertise"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "level": "Level",
+      "experience": "Experience"
+    }
+  }
+}

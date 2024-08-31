@@ -1,7 +1,7 @@
 export enum Contract {
-  CDI = 'Permanent employment contract',
+  CDI = 'Permanent contract',
 
-  CDD = 'FIXED-TERM CONTRACT',
+  CDD = 'Fixed-term contract',
 
   FREELANCE = 'Freelance',
 }

@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="experience">
+      <h2 data-cy="experienceDetailsHeading"><span jhiTranslate="demoApp.experience.detail.title">Experience</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ experience.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.experience.title">Title</span></dt>
+        <dd>
+          <span>{{ experience.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.experience.company">Company</span></dt>
+        <dd>
+          <span>{{ experience.company }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.experience.description">Description</span></dt>
+        <dd>
+          <span>{{ experience.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.experience.logoCompany">Logo Company</span></dt>
+        <dd>
+          <div *ngIf="experience.logoCompany">
+            <a (click)="openFile(experience.logoCompany, experience.logoCompanyContentType)">
+              <img
+                [src]="'data:' + experience.logoCompanyContentType + ';base64,' + experience.logoCompany"
+                style="max-width: 100%"
+                alt="experience image"
+              />
+            </a>
+            {{ experience.logoCompanyContentType }}, {{ byteSize(experience.logoCompany) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="demoApp.experience.inProgress">In Progress</span></dt>
+        <dd>
+          <span>{{ experience.inProgress }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.experience.contract">Contract</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'demoApp.Contract.' + experience.contract }}">{{ experience.contract }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.experience.startDate">Start Date</span></dt>
+        <dd>
+          <span>{{ experience.startDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.experience.endDate">End Date</span></dt>
+        <dd>
+          <span>{{ experience.endDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.experience.expertise">Expertise</span></dt>
+        <dd>
+          <span *ngFor="let expertise of experience.expertise; let last = last">
+            <a [routerLink]="['/expertise', expertise.id, 'view']">{{ expertise.title }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/experience', experience.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

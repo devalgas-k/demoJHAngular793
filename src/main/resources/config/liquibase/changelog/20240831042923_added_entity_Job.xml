@@ -32,7 +32,7 @@
             <column name="date" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="code" type="${uuidType}">
+            <column name="code_code" type="${uuidType}">
                 <constraints nullable="true" />
             </column>
             <column name="profil" type="${blobType}">
@@ -85,7 +85,7 @@
             <column name="sub_salary" type="numeric"/>
             <column name="total_salary" type="numeric"/>
             <column name="date" type="date"/>
-            <column name="code" type="${uuidType}"/>
+            <column name="code_code" type="${uuidType}"/>
             <column name="profil" type="blob"/>
             <column name="profil_content_type" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->

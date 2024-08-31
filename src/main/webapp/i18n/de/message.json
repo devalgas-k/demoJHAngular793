@@ -1,0 +1,32 @@
+{
+  "demoApp": {
+    "message": {
+      "home": {
+        "title": "Messages",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Message erstellen",
+        "createOrEditLabel": "Message erstellen oder bearbeiten",
+        "notFound": "Keine Messages gefunden"
+      },
+      "created": "Message erstellt mit ID {{ param }}",
+      "updated": "Message aktualisiert mit ID {{ param }}",
+      "deleted": "Message gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Message {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Message"
+      },
+      "id": "ID",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
+      "file": "File",
+      "city": "City",
+      "otherCountry": "Other Country",
+      "date": "Date",
+      "subject": "Subject"
+    }
+  }
+}

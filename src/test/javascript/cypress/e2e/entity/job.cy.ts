@@ -172,7 +172,7 @@ describe('Job e2e test', () => {
 
       cy.get(`[data-cy="date"]`).type('2024-08-30').blur().should('have.value', '2024-08-30');
 
-      cy.get(`[data-cy="code"]`)
+      cy.get(`[data-cy="codeCode"]`)
         .type('f2e1e10e-9a6f-44a0-9fd3-765df8ca55dd')
         .invoke('val')
         .should('match', new RegExp('f2e1e10e-9a6f-44a0-9fd3-765df8ca55dd'));

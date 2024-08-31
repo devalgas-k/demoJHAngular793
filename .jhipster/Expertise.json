@@ -1,0 +1,45 @@
+{
+  "applications": "*",
+  "changelogDate": "20240831044447",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "expertise",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["maxlength", "required", "pattern"],
+      "fieldValidateRulesMaxlength": "256",
+      "fieldValidateRulesPattern": "^[A-Z].*$"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    },
+    {
+      "fieldName": "level",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["min", "max"],
+      "fieldValidateRulesMax": "100",
+      "fieldValidateRulesMin": "20"
+    }
+  ],
+  "fluentMethods": true,
+  "javadoc": "This is a expertise\\nexpertise a class\\n@author Devalgas",
+  "jpaMetamodelFiltering": false,
+  "name": "Expertise",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "company",
+      "otherEntityName": "experience",
+      "otherEntityRelationshipName": "expertise",
+      "ownerSide": false,
+      "relationshipName": "experience",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

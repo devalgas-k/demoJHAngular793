@@ -110,15 +110,4 @@ describe('Employee Management Component', () => {
       })
     );
   });
-
-  it('should re-initialize the page', () => {
-    // WHEN
-    comp.loadPage(1);
-    comp.reset();
-
-    // THEN
-    expect(comp.page).toEqual(1);
-    expect(service.query).toHaveBeenCalledTimes(2);
-    expect(comp.employees?.[0]).toEqual(expect.objectContaining({ id: 123 }));
-  });
 });

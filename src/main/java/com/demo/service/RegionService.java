@@ -1,43 +1,45 @@
 package com.demo.service;
 
-import com.demo.domain.Region;
-import java.util.List;
+import com.demo.service.dto.RegionDTO;
 import java.util.Optional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
- * Service Interface for managing {@link Region}.
+ * Service Interface for managing {@link com.demo.domain.Region}.
  */
 public interface RegionService {
     /**
      * Save a region.
      *
-     * @param region the entity to save.
+     * @param regionDTO the entity to save.
      * @return the persisted entity.
      */
-    Region save(Region region);
+    RegionDTO save(RegionDTO regionDTO);
 
     /**
      * Updates a region.
      *
-     * @param region the entity to update.
+     * @param regionDTO the entity to update.
      * @return the persisted entity.
      */
-    Region update(Region region);
+    RegionDTO update(RegionDTO regionDTO);
 
     /**
      * Partially updates a region.
      *
-     * @param region the entity to update partially.
+     * @param regionDTO the entity to update partially.
      * @return the persisted entity.
      */
-    Optional<Region> partialUpdate(Region region);
+    Optional<RegionDTO> partialUpdate(RegionDTO regionDTO);
 
     /**
      * Get all the regions.
      *
+     * @param pageable the pagination information.
      * @return the list of entities.
      */
-    List<Region> findAll();
+    Page<RegionDTO> findAll(Pageable pageable);
 
     /**
      * Get the "id" region.
@@ -45,7 +47,7 @@ public interface RegionService {
      * @param id the id of the entity.
      * @return the entity.
      */
-    Optional<Region> findOne(Long id);
+    Optional<RegionDTO> findOne(Long id);
 
     /**
      * Delete the "id" region.

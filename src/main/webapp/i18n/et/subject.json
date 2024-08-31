@@ -1,0 +1,24 @@
+{
+  "demoApp": {
+    "subject": {
+      "home": {
+        "title": "Subjects",
+        "refreshListLabel": "Värskenda nimekirja",
+        "createLabel": "Lisa uus Subject",
+        "createOrEditLabel": "Lisa või muuda Subject",
+        "notFound": "Ei leitud ühtegi Subjects"
+      },
+      "created": "Uus Subject on loodud identifikaatoriga {{ param }}",
+      "updated": "Subject identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Subject identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Subject {{ id }}?"
+      },
+      "detail": {
+        "title": "Subject"
+      },
+      "id": "ID",
+      "name": "Name"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "demoApp": {
+    "experience": {
+      "home": {
+        "title": "Experiences",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Experience erstellen",
+        "createOrEditLabel": "Experience erstellen oder bearbeiten",
+        "notFound": "Keine Experiences gefunden"
+      },
+      "created": "Experience erstellt mit ID {{ param }}",
+      "updated": "Experience aktualisiert mit ID {{ param }}",
+      "deleted": "Experience gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Experience {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Experience"
+      },
+      "id": "ID",
+      "title": "Title",
+      "company": "Company",
+      "description": "Description",
+      "logoCompany": "Logo Company",
+      "inProgress": "In Progress",
+      "contract": "Contract",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "expertise": "Expertise"
+    }
+  }
+}

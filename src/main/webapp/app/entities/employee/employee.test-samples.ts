@@ -28,7 +28,7 @@ export const sampleWithFullData: IEmployee = {
   hireDate: dayjs('2024-08-30T18:50'),
   salary: 12223,
   commissionPct: 56239,
-  level: 41,
+  level: 4,
   contract: Contract['FREELANCE'],
   cv: '../fake-data/blob/hipster.png',
   cvContentType: 'unknown',

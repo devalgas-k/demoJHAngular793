@@ -10,7 +10,7 @@ export interface IJob {
   subSalary?: number | null;
   totalSalary?: number | null;
   date?: dayjs.Dayjs | null;
-  code?: string | null;
+  codeCode?: string | null;
   profil?: string | null;
   profilContentType?: string | null;
   tasks?: Pick<ITask, 'id' | 'title'>[] | null;

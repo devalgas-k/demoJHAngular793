@@ -73,7 +73,7 @@ export class EmployeeFormService {
       salary: new FormControl(employeeRawValue.salary),
       commissionPct: new FormControl(employeeRawValue.commissionPct),
       level: new FormControl(employeeRawValue.level, {
-        validators: [Validators.min(20), Validators.max(100)],
+        validators: [Validators.min(1), Validators.max(14)],
       }),
       contract: new FormControl(employeeRawValue.contract),
       cv: new FormControl(employeeRawValue.cv),
