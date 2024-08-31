@@ -1,0 +1,26 @@
+{
+  "demoApp": {
+    "department": {
+      "home": {
+        "title": "Departments",
+        "refreshListLabel": "Värskenda nimekirja",
+        "createLabel": "Lisa uus Department",
+        "createOrEditLabel": "Lisa või muuda Department",
+        "notFound": "Ei leitud ühtegi Departments"
+      },
+      "created": "Uus Department on loodud identifikaatoriga {{ param }}",
+      "updated": "Department identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Department identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Department {{ id }}?"
+      },
+      "detail": {
+        "title": "Department"
+      },
+      "id": "ID",
+      "departmentName": "Department Name",
+      "location": "Location",
+      "employee": "Employee"
+    }
+  }
+}

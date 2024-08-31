@@ -1,0 +1,28 @@
+{
+  "demoApp": {
+    "job": {
+      "home": {
+        "title": "Jobs",
+        "refreshListLabel": "Värskenda nimekirja",
+        "createLabel": "Lisa uus Job",
+        "createOrEditLabel": "Lisa või muuda Job",
+        "notFound": "Ei leitud ühtegi Jobs"
+      },
+      "created": "Uus Job on loodud identifikaatoriga {{ param }}",
+      "updated": "Job identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Job identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Job {{ id }}?"
+      },
+      "detail": {
+        "title": "Job"
+      },
+      "id": "ID",
+      "jobTitle": "Job Title",
+      "minSalary": "Min Salary",
+      "maxSalary": "Max Salary",
+      "task": "Task",
+      "employee": "Employee"
+    }
+  }
+}

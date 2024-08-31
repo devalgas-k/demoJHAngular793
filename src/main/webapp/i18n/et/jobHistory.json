@@ -1,0 +1,31 @@
+{
+  "demoApp": {
+    "jobHistory": {
+      "home": {
+        "title": "Job Histories",
+        "refreshListLabel": "Värskenda nimekirja",
+        "createLabel": "Lisa uus Job History",
+        "createOrEditLabel": "Lisa või muuda Job History",
+        "notFound": "Ei leitud ühtegi Job Histories"
+      },
+      "created": "Uus Job History on loodud identifikaatoriga {{ param }}",
+      "updated": "Job History identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Job History identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Job History {{ id }}?"
+      },
+      "detail": {
+        "title": "Job History"
+      },
+      "id": "ID",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "language": "Language",
+      "file": "File",
+      "date": "Date",
+      "job": "Job",
+      "department": "Department",
+      "employee": "Employee"
+    }
+  }
+}

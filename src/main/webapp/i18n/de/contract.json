@@ -1,0 +1,10 @@
+{
+  "demoApp": {
+    "Contract": {
+      "null": "",
+      "CDI": "CDI",
+      "CDD": "CDD",
+      "FREELANCE": "Freelance"
+    }
+  }
+}

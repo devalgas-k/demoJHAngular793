@@ -1,0 +1,28 @@
+{
+  "demoApp": {
+    "location": {
+      "home": {
+        "title": "Locations",
+        "refreshListLabel": "Värskenda nimekirja",
+        "createLabel": "Lisa uus Location",
+        "createOrEditLabel": "Lisa või muuda Location",
+        "notFound": "Ei leitud ühtegi Locations"
+      },
+      "created": "Uus Location on loodud identifikaatoriga {{ param }}",
+      "updated": "Location identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Location identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Location {{ id }}?"
+      },
+      "detail": {
+        "title": "Location"
+      },
+      "id": "ID",
+      "streetAddress": "Street Address",
+      "postalCode": "Postal Code",
+      "city": "City",
+      "stateProvince": "State Province",
+      "country": "Country"
+    }
+  }
+}

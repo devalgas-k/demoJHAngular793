@@ -1,0 +1,26 @@
+{
+  "demoApp": {
+    "task": {
+      "home": {
+        "title": "Tasks",
+        "refreshListLabel": "Värskenda nimekirja",
+        "createLabel": "Lisa uus Task",
+        "createOrEditLabel": "Lisa või muuda Task",
+        "notFound": "Ei leitud ühtegi Tasks"
+      },
+      "created": "Uus Task on loodud identifikaatoriga {{ param }}",
+      "updated": "Task identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Task identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Task {{ id }}?"
+      },
+      "detail": {
+        "title": "Task"
+      },
+      "id": "ID",
+      "title": "Title",
+      "description": "Description",
+      "job": "Job"
+    }
+  }
+}

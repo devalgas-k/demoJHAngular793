@@ -1,0 +1,24 @@
+{
+  "demoApp": {
+    "region": {
+      "home": {
+        "title": "Regions",
+        "refreshListLabel": "Värskenda nimekirja",
+        "createLabel": "Lisa uus Region",
+        "createOrEditLabel": "Lisa või muuda Region",
+        "notFound": "Ei leitud ühtegi Regions"
+      },
+      "created": "Uus Region on loodud identifikaatoriga {{ param }}",
+      "updated": "Region identifikaatoriga {{ param }} on muudetud",
+      "deleted": "Region identifikaatoriga {{ param }} on kustutatud",
+      "delete": {
+        "question": "Kas olete kindel, et soovite kustutada Region {{ id }}?"
+      },
+      "detail": {
+        "title": "Region"
+      },
+      "id": "ID",
+      "regionName": "Region Name"
+    }
+  }
+}
