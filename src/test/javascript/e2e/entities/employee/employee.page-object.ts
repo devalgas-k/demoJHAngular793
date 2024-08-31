@@ -39,6 +39,7 @@ export class EmployeeUpdatePage {
   commissionPctInput = element(by.id('field_commissionPct'));
   levelInput = element(by.id('field_level'));
   contractSelect = element(by.id('field_contract'));
+  cvInput = element(by.id('file_cv'));
 
   managerSelect = element(by.id('field_manager'));
   departmentSelect = element(by.id('field_department'));
@@ -129,6 +130,14 @@ export class EmployeeUpdatePage {
 
   async contractSelectLastOption(): Promise<void> {
     await this.contractSelect.all(by.tagName('option')).last().click();
+  }
+
+  async setCvInput(cv: string): Promise<void> {
+    await this.cvInput.sendKeys(cv);
+  }
+
+  async getCvInput(): Promise<string> {
+    return await this.cvInput.getAttribute('value');
   }
 
   async managerSelectLastOption(): Promise<void> {

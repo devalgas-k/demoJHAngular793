@@ -12,6 +12,7 @@ export interface IJobHistory {
   file?: string | null;
   fileContentType?: string | null;
   date?: dayjs.Dayjs | null;
+  duration?: string | null;
   job?: Pick<IJob, 'id'> | null;
   department?: Pick<IDepartment, 'id'> | null;
   employee?: Pick<IEmployee, 'id'> | null;

@@ -92,6 +92,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="cv">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.employee.cv">Cv</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="manager.id">
             <div class="d-flex">
               <span jhiTranslate="demoApp.employee.manager">Manager</span>
@@ -126,6 +132,10 @@
           <td>{{ employee.commissionPct }}</td>
           <td>{{ employee.level }}</td>
           <td jhiTranslate="{{ 'demoApp.Contract.' + employee.contract }}">{{ employee.contract }}</td>
+          <td>
+            <a *ngIf="employee.cv" (click)="openFile(employee.cv, employee.cvContentType)" jhiTranslate="entity.action.open">Ouvrir</a>
+            <span *ngIf="employee.cv">{{ employee.cvContentType }}, {{ byteSize(employee.cv) }}</span>
+          </td>
           <td>
             <div *ngIf="employee.manager">
               <a [routerLink]="['/employee', employee.manager.id, 'view']">{{ employee.manager.id }}</a>

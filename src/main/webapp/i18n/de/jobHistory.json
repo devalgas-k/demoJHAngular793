@@ -23,6 +23,7 @@
       "language": "Language",
       "file": "File",
       "date": "Date",
+      "duration": "Duration",
       "job": "Job",
       "department": "Department",
       "employee": "Employee"

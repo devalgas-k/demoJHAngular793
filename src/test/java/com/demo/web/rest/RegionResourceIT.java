@@ -29,8 +29,8 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class RegionResourceIT {
 
-    private static final String DEFAULT_REGION_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_REGION_NAME = "BBBBBBBBBB";
+    private static final String DEFAULT_REGION_NAME = "No7";
+    private static final String UPDATED_REGION_NAME = "Nhqu6";
 
     private static final String ENTITY_API_URL = "/api/regions";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -244,8 +244,6 @@ class RegionResourceIT {
         Region partialUpdatedRegion = new Region();
         partialUpdatedRegion.setId(region.getId());
 
-        partialUpdatedRegion.regionName(UPDATED_REGION_NAME);
-
         restRegionMockMvc
             .perform(
                 patch(ENTITY_API_URL_ID, partialUpdatedRegion.getId())
@@ -258,7 +256,7 @@ class RegionResourceIT {
         List<Region> regionList = regionRepository.findAll();
         assertThat(regionList).hasSize(databaseSizeBeforeUpdate);
         Region testRegion = regionList.get(regionList.size() - 1);
-        assertThat(testRegion.getRegionName()).isEqualTo(UPDATED_REGION_NAME);
+        assertThat(testRegion.getRegionName()).isEqualTo(DEFAULT_REGION_NAME);
     }
 
     @Test

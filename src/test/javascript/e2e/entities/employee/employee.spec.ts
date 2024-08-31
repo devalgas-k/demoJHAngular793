@@ -2,6 +2,7 @@ import { browser, ExpectedConditions as ec, protractor, promise } from 'protract
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
 
 import { EmployeeComponentsPage, EmployeeDeleteDialog, EmployeeUpdatePage } from './employee.page-object';
+import path from 'path';
 
 const expect = chai.expect;
 
@@ -11,6 +12,9 @@ describe('Employee e2e test', () => {
   let employeeComponentsPage: EmployeeComponentsPage;
   let employeeUpdatePage: EmployeeUpdatePage;
   let employeeDeleteDialog: EmployeeDeleteDialog;
+  const fileNameToUpload = 'logo-jhipster.png';
+  const fileToUpload = '../../../../../../src/main/webapp/content/images/' + fileNameToUpload;
+  const absolutePath = path.resolve(__dirname, fileToUpload);
   const username = process.env.E2E_USERNAME ?? 'admin';
   const password = process.env.E2E_PASSWORD ?? 'admin';
 
@@ -52,6 +56,7 @@ describe('Employee e2e test', () => {
       employeeUpdatePage.setCommissionPctInput('5'),
       employeeUpdatePage.setLevelInput('5'),
       employeeUpdatePage.contractSelectLastOption(),
+      employeeUpdatePage.setCvInput(absolutePath),
       employeeUpdatePage.managerSelectLastOption(),
       employeeUpdatePage.departmentSelectLastOption(),
     ]);

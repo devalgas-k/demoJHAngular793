@@ -10,11 +10,13 @@ export const sampleWithRequiredData: IEmployee = {
 };
 
 export const sampleWithPartialData: IEmployee = {
-  id: 99523,
-  firstName: 'Perrine',
-  email: 'rI@|?.NKz4',
-  phoneNumber: 'Pizza paradigm',
+  id: 40560,
+  firstName: 'Guillemette',
+  email: 'I<|?SN@z4D.q',
+  phoneNumber: 'paradigm',
   contract: Contract['FREELANCE'],
+  cv: '../fake-data/blob/hipster.png',
+  cvContentType: 'unknown',
 };
 
 export const sampleWithFullData: IEmployee = {
@@ -28,6 +30,8 @@ export const sampleWithFullData: IEmployee = {
   commissionPct: 56239,
   level: 41,
   contract: Contract['FREELANCE'],
+  cv: '../fake-data/blob/hipster.png',
+  cvContentType: 'unknown',
 };
 
 export const sampleWithNewData: NewEmployee = {

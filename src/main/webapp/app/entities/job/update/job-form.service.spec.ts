@@ -23,6 +23,11 @@ describe('Job Form Service', () => {
             jobTitle: expect.any(Object),
             minSalary: expect.any(Object),
             maxSalary: expect.any(Object),
+            subSalary: expect.any(Object),
+            totalSalary: expect.any(Object),
+            date: expect.any(Object),
+            code: expect.any(Object),
+            profil: expect.any(Object),
             tasks: expect.any(Object),
             employee: expect.any(Object),
           })
@@ -38,6 +43,11 @@ describe('Job Form Service', () => {
             jobTitle: expect.any(Object),
             minSalary: expect.any(Object),
             maxSalary: expect.any(Object),
+            subSalary: expect.any(Object),
+            totalSalary: expect.any(Object),
+            date: expect.any(Object),
+            code: expect.any(Object),
+            profil: expect.any(Object),
             tasks: expect.any(Object),
             employee: expect.any(Object),
           })

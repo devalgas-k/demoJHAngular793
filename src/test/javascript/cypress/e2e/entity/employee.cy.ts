@@ -178,6 +178,10 @@ describe('Employee e2e test', () => {
 
       cy.get(`[data-cy="contract"]`).select('FREELANCE');
 
+      cy.setFieldImageAsBytesOfEntity('cv', 'integration-test.png', 'image/png');
+
+      // since cypress clicks submit too fast before the blob fields are validated
+      cy.wait(200); // eslint-disable-line cypress/no-unnecessary-waiting
       cy.get(entityCreateSaveButtonSelector).click();
 
       cy.wait('@postEntityRequest').then(({ response }) => {

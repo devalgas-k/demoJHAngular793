@@ -23,6 +23,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 /**
  * Integration tests for the {@link EmployeeResource} REST controller.
@@ -59,6 +60,11 @@ class EmployeeResourceIT {
     private static final Contract DEFAULT_CONTRACT = Contract.CDI;
     private static final Contract UPDATED_CONTRACT = Contract.CDD;
 
+    private static final byte[] DEFAULT_CV = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_CV = TestUtil.createByteArray(1, "1");
+    private static final String DEFAULT_CV_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_CV_CONTENT_TYPE = "image/png";
+
     private static final String ENTITY_API_URL = "/api/employees";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -92,7 +98,9 @@ class EmployeeResourceIT {
             .salary(DEFAULT_SALARY)
             .commissionPct(DEFAULT_COMMISSION_PCT)
             .level(DEFAULT_LEVEL)
-            .contract(DEFAULT_CONTRACT);
+            .contract(DEFAULT_CONTRACT)
+            .cv(DEFAULT_CV)
+            .cvContentType(DEFAULT_CV_CONTENT_TYPE);
         return employee;
     }
 
@@ -112,7 +120,9 @@ class EmployeeResourceIT {
             .salary(UPDATED_SALARY)
             .commissionPct(UPDATED_COMMISSION_PCT)
             .level(UPDATED_LEVEL)
-            .contract(UPDATED_CONTRACT);
+            .contract(UPDATED_CONTRACT)
+            .cv(UPDATED_CV)
+            .cvContentType(UPDATED_CV_CONTENT_TYPE);
         return employee;
     }
 
@@ -143,6 +153,8 @@ class EmployeeResourceIT {
         assertThat(testEmployee.getCommissionPct()).isEqualTo(DEFAULT_COMMISSION_PCT);
         assertThat(testEmployee.getLevel()).isEqualTo(DEFAULT_LEVEL);
         assertThat(testEmployee.getContract()).isEqualTo(DEFAULT_CONTRACT);
+        assertThat(testEmployee.getCv()).isEqualTo(DEFAULT_CV);
+        assertThat(testEmployee.getCvContentType()).isEqualTo(DEFAULT_CV_CONTENT_TYPE);
     }
 
     @Test
@@ -200,7 +212,9 @@ class EmployeeResourceIT {
             .andExpect(jsonPath("$.[*].salary").value(hasItem(DEFAULT_SALARY.intValue())))
             .andExpect(jsonPath("$.[*].commissionPct").value(hasItem(DEFAULT_COMMISSION_PCT.intValue())))
             .andExpect(jsonPath("$.[*].level").value(hasItem(DEFAULT_LEVEL)))
-            .andExpect(jsonPath("$.[*].contract").value(hasItem(DEFAULT_CONTRACT.toString())));
+            .andExpect(jsonPath("$.[*].contract").value(hasItem(DEFAULT_CONTRACT.toString())))
+            .andExpect(jsonPath("$.[*].cvContentType").value(hasItem(DEFAULT_CV_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].cv").value(hasItem(Base64Utils.encodeToString(DEFAULT_CV))));
     }
 
     @Test
@@ -223,7 +237,9 @@ class EmployeeResourceIT {
             .andExpect(jsonPath("$.salary").value(DEFAULT_SALARY.intValue()))
             .andExpect(jsonPath("$.commissionPct").value(DEFAULT_COMMISSION_PCT.intValue()))
             .andExpect(jsonPath("$.level").value(DEFAULT_LEVEL))
-            .andExpect(jsonPath("$.contract").value(DEFAULT_CONTRACT.toString()));
+            .andExpect(jsonPath("$.contract").value(DEFAULT_CONTRACT.toString()))
+            .andExpect(jsonPath("$.cvContentType").value(DEFAULT_CV_CONTENT_TYPE))
+            .andExpect(jsonPath("$.cv").value(Base64Utils.encodeToString(DEFAULT_CV)));
     }
 
     @Test
@@ -254,7 +270,9 @@ class EmployeeResourceIT {
             .salary(UPDATED_SALARY)
             .commissionPct(UPDATED_COMMISSION_PCT)
             .level(UPDATED_LEVEL)
-            .contract(UPDATED_CONTRACT);
+            .contract(UPDATED_CONTRACT)
+            .cv(UPDATED_CV)
+            .cvContentType(UPDATED_CV_CONTENT_TYPE);
 
         restEmployeeMockMvc
             .perform(
@@ -277,6 +295,8 @@ class EmployeeResourceIT {
         assertThat(testEmployee.getCommissionPct()).isEqualTo(UPDATED_COMMISSION_PCT);
         assertThat(testEmployee.getLevel()).isEqualTo(UPDATED_LEVEL);
         assertThat(testEmployee.getContract()).isEqualTo(UPDATED_CONTRACT);
+        assertThat(testEmployee.getCv()).isEqualTo(UPDATED_CV);
+        assertThat(testEmployee.getCvContentType()).isEqualTo(UPDATED_CV_CONTENT_TYPE);
     }
 
     @Test
@@ -347,7 +367,7 @@ class EmployeeResourceIT {
         Employee partialUpdatedEmployee = new Employee();
         partialUpdatedEmployee.setId(employee.getId());
 
-        partialUpdatedEmployee.hireDate(UPDATED_HIRE_DATE).contract(UPDATED_CONTRACT);
+        partialUpdatedEmployee.hireDate(UPDATED_HIRE_DATE).contract(UPDATED_CONTRACT).cv(UPDATED_CV).cvContentType(UPDATED_CV_CONTENT_TYPE);
 
         restEmployeeMockMvc
             .perform(
@@ -370,6 +390,8 @@ class EmployeeResourceIT {
         assertThat(testEmployee.getCommissionPct()).isEqualTo(DEFAULT_COMMISSION_PCT);
         assertThat(testEmployee.getLevel()).isEqualTo(DEFAULT_LEVEL);
         assertThat(testEmployee.getContract()).isEqualTo(UPDATED_CONTRACT);
+        assertThat(testEmployee.getCv()).isEqualTo(UPDATED_CV);
+        assertThat(testEmployee.getCvContentType()).isEqualTo(UPDATED_CV_CONTENT_TYPE);
     }
 
     @Test
@@ -393,7 +415,9 @@ class EmployeeResourceIT {
             .salary(UPDATED_SALARY)
             .commissionPct(UPDATED_COMMISSION_PCT)
             .level(UPDATED_LEVEL)
-            .contract(UPDATED_CONTRACT);
+            .contract(UPDATED_CONTRACT)
+            .cv(UPDATED_CV)
+            .cvContentType(UPDATED_CV_CONTENT_TYPE);
 
         restEmployeeMockMvc
             .perform(
@@ -416,6 +440,8 @@ class EmployeeResourceIT {
         assertThat(testEmployee.getCommissionPct()).isEqualTo(UPDATED_COMMISSION_PCT);
         assertThat(testEmployee.getLevel()).isEqualTo(UPDATED_LEVEL);
         assertThat(testEmployee.getContract()).isEqualTo(UPDATED_CONTRACT);
+        assertThat(testEmployee.getCv()).isEqualTo(UPDATED_CV);
+        assertThat(testEmployee.getCvContentType()).isEqualTo(UPDATED_CV_CONTENT_TYPE);
     }
 
     @Test

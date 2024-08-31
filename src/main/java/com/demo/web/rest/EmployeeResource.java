@@ -158,6 +158,12 @@ public class EmployeeResource {
                 if (employee.getContract() != null) {
                     existingEmployee.setContract(employee.getContract());
                 }
+                if (employee.getCv() != null) {
+                    existingEmployee.setCv(employee.getCv());
+                }
+                if (employee.getCvContentType() != null) {
+                    existingEmployee.setCvContentType(employee.getCvContentType());
+                }
 
                 return existingEmployee;
             })

@@ -47,7 +47,12 @@
       "fieldName": "contract",
       "fieldType": "Contract",
       "fieldTypeJavadoc": "This is a contract\\ncontract am enum",
-      "fieldValues": "CDI (CDI),CDD (CDD),FREELANCE (Freelance)"
+      "fieldValues": "CDI (Permanent employment contract),CDD (FIXED-TERM CONTRACT),FREELANCE (Freelance)"
+    },
+    {
+      "fieldName": "cv",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
     }
   ],
   "fluentMethods": true,

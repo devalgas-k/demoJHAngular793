@@ -2,6 +2,7 @@ import { browser, ExpectedConditions as ec, promise } from 'protractor';
 import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
 
 import { JobComponentsPage, JobDeleteDialog, JobUpdatePage } from './job.page-object';
+import path from 'path';
 
 const expect = chai.expect;
 
@@ -11,6 +12,9 @@ describe('Job e2e test', () => {
   let jobComponentsPage: JobComponentsPage;
   let jobUpdatePage: JobUpdatePage;
   let jobDeleteDialog: JobDeleteDialog;
+  const fileNameToUpload = 'logo-jhipster.png';
+  const fileToUpload = '../../../../../../src/main/webapp/content/images/' + fileNameToUpload;
+  const absolutePath = path.resolve(__dirname, fileToUpload);
   const username = process.env.E2E_USERNAME ?? 'admin';
   const password = process.env.E2E_PASSWORD ?? 'admin';
 
@@ -46,6 +50,11 @@ describe('Job e2e test', () => {
       jobUpdatePage.setJobTitleInput('jobTitle'),
       jobUpdatePage.setMinSalaryInput('5'),
       jobUpdatePage.setMaxSalaryInput('5'),
+      jobUpdatePage.setSubSalaryInput('5'),
+      jobUpdatePage.setTotalSalaryInput('5'),
+      jobUpdatePage.setDateInput('2000-12-31'),
+      jobUpdatePage.setCodeInput('64c99148-3908-465d-8c4a-e510e3ade974'),
+      jobUpdatePage.setProfilInput(absolutePath),
       // jobUpdatePage.taskSelectLastOption(),
       jobUpdatePage.employeeSelectLastOption(),
     ]);

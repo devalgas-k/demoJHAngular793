@@ -68,6 +68,12 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="duration">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.jobHistory.duration">Duration</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="job.id">
             <div class="d-flex">
               <span jhiTranslate="demoApp.jobHistory.job">Job</span>
@@ -109,6 +115,7 @@
             <span *ngIf="jobHistory.file">{{ jobHistory.fileContentType }}, {{ byteSize(jobHistory.file) }}</span>
           </td>
           <td>{{ jobHistory.date | formatMediumDatetime }}</td>
+          <td title="{{ jobHistory.duration }}">{{ jobHistory.duration | duration }}</td>
           <td>
             <div *ngIf="jobHistory.job">
               <a [routerLink]="['/job', jobHistory.job.id, 'view']">{{ jobHistory.job.id }}</a>

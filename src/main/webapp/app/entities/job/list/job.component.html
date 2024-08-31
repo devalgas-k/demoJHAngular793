@@ -56,6 +56,36 @@
               <fa-icon class="p-1" icon="sort"></fa-icon>
             </div>
           </th>
+          <th scope="col" jhiSortBy="subSalary">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.job.subSalary">Sub Salary</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="totalSalary">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.job.totalSalary">Total Salary</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="date">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.job.date">Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="code">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.job.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="profil">
+            <div class="d-flex">
+              <span jhiTranslate="demoApp.job.profil">Profil</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
           <th scope="col" jhiSortBy="employee.id">
             <div class="d-flex">
               <span jhiTranslate="demoApp.job.employee">Employee</span>
@@ -73,6 +103,16 @@
           <td>{{ job.jobTitle }}</td>
           <td>{{ job.minSalary }}</td>
           <td>{{ job.maxSalary }}</td>
+          <td>{{ job.subSalary }}</td>
+          <td>{{ job.totalSalary }}</td>
+          <td>{{ job.date | formatMediumDate }}</td>
+          <td>{{ job.code }}</td>
+          <td>
+            <a *ngIf="job.profil" (click)="openFile(job.profil, job.profilContentType)">
+              <img [src]="'data:' + job.profilContentType + ';base64,' + job.profil" style="max-height: 30px" alt="job image" />
+            </a>
+            <span *ngIf="job.profil">{{ job.profilContentType }}, {{ byteSize(job.profil) }}</span>
+          </td>
           <td>
             <div *ngIf="job.employee">
               <a [routerLink]="['/employee', job.employee.id, 'view']">{{ job.employee.id }}</a>

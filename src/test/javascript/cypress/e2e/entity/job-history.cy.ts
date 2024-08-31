@@ -170,6 +170,8 @@ describe('JobHistory e2e test', () => {
 
       cy.get(`[data-cy="date"]`).type('2024-08-31T03:02').blur().should('have.value', '2024-08-31T03:02');
 
+      cy.get(`[data-cy="duration"]`).type('PT45M').blur().should('have.value', 'PT45M');
+
       // since cypress clicks submit too fast before the blob fields are validated
       cy.wait(200); // eslint-disable-line cypress/no-unnecessary-waiting
       cy.get(entityCreateSaveButtonSelector).click();

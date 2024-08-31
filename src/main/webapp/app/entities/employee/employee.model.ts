@@ -13,6 +13,8 @@ export interface IEmployee {
   commissionPct?: number | null;
   level?: number | null;
   contract?: Contract | null;
+  cv?: string | null;
+  cvContentType?: string | null;
   manager?: Pick<IEmployee, 'id'> | null;
   department?: Pick<IDepartment, 'id'> | null;
 }

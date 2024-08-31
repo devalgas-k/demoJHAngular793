@@ -39,6 +39,7 @@ type JobHistoryFormGroupContent = {
   file: FormControl<JobHistoryFormRawValue['file']>;
   fileContentType: FormControl<JobHistoryFormRawValue['fileContentType']>;
   date: FormControl<JobHistoryFormRawValue['date']>;
+  duration: FormControl<JobHistoryFormRawValue['duration']>;
   job: FormControl<JobHistoryFormRawValue['job']>;
   department: FormControl<JobHistoryFormRawValue['department']>;
   employee: FormControl<JobHistoryFormRawValue['employee']>;
@@ -67,6 +68,7 @@ export class JobHistoryFormService {
       file: new FormControl(jobHistoryRawValue.file),
       fileContentType: new FormControl(jobHistoryRawValue.fileContentType),
       date: new FormControl(jobHistoryRawValue.date),
+      duration: new FormControl(jobHistoryRawValue.duration),
       job: new FormControl(jobHistoryRawValue.job),
       department: new FormControl(jobHistoryRawValue.department),
       employee: new FormControl(jobHistoryRawValue.employee),

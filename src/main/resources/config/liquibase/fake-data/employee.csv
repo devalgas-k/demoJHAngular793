@@ -1,11 +1,1 @@
-id;first_name;last_name;email;phone_number;hire_date;salary;commission_pct;level;contract
-1;Camélien;Rey;"[Km,@YGd;\.,9d";Tuna Bedfordshire;2024-08-31T01:48:27;16158;64123;53;CDD
-2;Antoinette;Moulin;"}p@!.X:";Sleek;2024-08-30T11:17:36;71090;65309;68;CDI
-3;Marc;Robert;"PON@2jD.'";du synergy Albanie;2024-08-30T15:27:57;80529;94809;65;CDI
-4;Adalbert;Meunier;"-@+3.`{2";payment frictionless c;2024-08-31T01:14:07;24370;15306;69;CDD
-5;Tanguy;Lefevre;"H91yD@R_TL2{.,;!";Nicaragua;2024-08-30T05:24:30;56056;24520;23;CDI
-6;Albérade;Faure;"pcJ0l@}057.Ju";Shoes Concrete 1080p;2024-08-30T16:43:31;24828;43072;82;CDD
-7;Alcidie;Picard;")&v?@0.7^G";Baby;2024-08-31T00:23:00;62582;93711;62;CDI
-8;Hermine;Pons;"|+fN@%.*WR";architecture tchèque;2024-08-30T06:09:03;42468;23334;33;FREELANCE
-9;Rolande;Guerin;"9_U@c)8$.W6y";Unbranded BEAC;2024-08-30T06:08:55;85255;68150;38;CDD
-10;Philippe;Aubry;"(@?#J^wd.]&g$";Unbranded;2024-08-31T01:03:06;53108;28727;32;CDD
+id;first_name;last_name;email;phone_number;hire_date;salary;commission_pct;level;contract;cv;cv_content_type

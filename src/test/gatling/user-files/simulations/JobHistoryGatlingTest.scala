@@ -76,6 +76,7 @@ class JobHistoryGatlingTest extends Simulation {
                 , "language":"FRENCH"
                 , "file":null
                 , "date":"2020-01-01T00:00:00.000Z"
+                , "duration":null
                 }""")).asJson
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_jobHistory_url"))).exitHereIfFailed

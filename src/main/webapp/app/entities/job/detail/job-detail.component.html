@@ -26,6 +26,31 @@
         <dd>
           <span>{{ job.maxSalary }}</span>
         </dd>
+        <dt><span jhiTranslate="demoApp.job.subSalary">Sub Salary</span></dt>
+        <dd>
+          <span>{{ job.subSalary }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.job.totalSalary">Total Salary</span></dt>
+        <dd>
+          <span>{{ job.totalSalary }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.job.date">Date</span></dt>
+        <dd>
+          <span>{{ job.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.job.code">Code</span></dt>
+        <dd>
+          <span>{{ job.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="demoApp.job.profil">Profil</span></dt>
+        <dd>
+          <div *ngIf="job.profil">
+            <a (click)="openFile(job.profil, job.profilContentType)">
+              <img [src]="'data:' + job.profilContentType + ';base64,' + job.profil" style="max-width: 100%" alt="job image" />
+            </a>
+            {{ job.profilContentType }}, {{ byteSize(job.profil) }}
+          </div>
+        </dd>
         <dt><span jhiTranslate="demoApp.job.task">Task</span></dt>
         <dd>
           <span *ngFor="let task of job.tasks; let last = last">

@@ -157,7 +157,7 @@ describe('Region e2e test', () => {
     });
 
     it('should create an instance of Region', () => {
-      cy.get(`[data-cy="regionName"]`).type('program').should('have.value', 'program');
+      cy.get(`[data-cy="regionName"]`).type('Dvnojl6').should('have.value', 'Dvnojl6');
 
       cy.get(entityCreateSaveButtonSelector).click();
 

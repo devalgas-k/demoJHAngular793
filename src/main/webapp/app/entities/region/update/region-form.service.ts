@@ -38,7 +38,9 @@ export class RegionFormService {
           validators: [Validators.required],
         }
       ),
-      regionName: new FormControl(regionRawValue.regionName),
+      regionName: new FormControl(regionRawValue.regionName, {
+        validators: [Validators.pattern('^[A-Z][a-z]+\\d$')],
+      }),
     });
   }
 

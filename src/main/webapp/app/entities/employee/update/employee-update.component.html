@@ -126,6 +126,31 @@
         </div>
 
         <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.employee.cv" for="field_cv">Cv</label>
+          <div>
+            <div *ngIf="editForm.get('cv')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('cv')!.value!, editForm.get('cvContentType')!.value!)"
+                jhiTranslate="entity.action.open"
+                >Ouvrir</a
+              ><br />
+              <span class="pull-start">{{ editForm.get('cvContentType')!.value }}, {{ byteSize(editForm.get('cv')!.value!) }}</span>
+              <button
+                type="button"
+                (click)="editForm.patchValue({ cv: undefined, cvContentType: undefined })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input type="file" id="file_cv" data-cy="cv" (change)="setFileData($event, 'cv', false)" jhiTranslate="entity.action.addblob" />
+          </div>
+          <input type="hidden" class="form-control" name="cv" id="field_cv" data-cy="cv" formControlName="cv" />
+          <input type="hidden" class="form-control" name="cvContentType" id="field_cvContentType" formControlName="cvContentType" />
+        </div>
+
+        <div class="row mb-3">
           <label class="form-label" jhiTranslate="demoApp.employee.manager" for="field_manager">Manager</label>
           <select
             class="form-control"

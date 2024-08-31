@@ -2,9 +2,13 @@ package com.demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -25,14 +29,35 @@ public class Job implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "job_title")
+    @NotNull
+    @Column(name = "job_title", nullable = false, unique = true)
     private String jobTitle;
 
-    @Column(name = "min_salary")
-    private Long minSalary;
+    @Column(name = "min_salary", precision = 21, scale = 2)
+    private BigDecimal minSalary;
 
     @Column(name = "max_salary")
     private Long maxSalary;
+
+    @Column(name = "sub_salary")
+    private Float subSalary;
+
+    @Column(name = "total_salary")
+    private Double totalSalary;
+
+    @Column(name = "date")
+    private LocalDate date;
+
+    @Column(name = "code")
+    private UUID code;
+
+    @Lob
+    @Column(name = "profil", nullable = false)
+    private byte[] profil;
+
+    @NotNull
+    @Column(name = "profil_content_type", nullable = false)
+    private String profilContentType;
 
     @ManyToMany
     @JoinTable(name = "rel_job__task", joinColumns = @JoinColumn(name = "job_id"), inverseJoinColumns = @JoinColumn(name = "task_id"))
@@ -72,16 +97,16 @@ public class Job implements Serializable {
         this.jobTitle = jobTitle;
     }
 
-    public Long getMinSalary() {
+    public BigDecimal getMinSalary() {
         return this.minSalary;
     }
 
-    public Job minSalary(Long minSalary) {
+    public Job minSalary(BigDecimal minSalary) {
         this.setMinSalary(minSalary);
         return this;
     }
 
-    public void setMinSalary(Long minSalary) {
+    public void setMinSalary(BigDecimal minSalary) {
         this.minSalary = minSalary;
     }
 
@@ -96,6 +121,84 @@ public class Job implements Serializable {
 
     public void setMaxSalary(Long maxSalary) {
         this.maxSalary = maxSalary;
+    }
+
+    public Float getSubSalary() {
+        return this.subSalary;
+    }
+
+    public Job subSalary(Float subSalary) {
+        this.setSubSalary(subSalary);
+        return this;
+    }
+
+    public void setSubSalary(Float subSalary) {
+        this.subSalary = subSalary;
+    }
+
+    public Double getTotalSalary() {
+        return this.totalSalary;
+    }
+
+    public Job totalSalary(Double totalSalary) {
+        this.setTotalSalary(totalSalary);
+        return this;
+    }
+
+    public void setTotalSalary(Double totalSalary) {
+        this.totalSalary = totalSalary;
+    }
+
+    public LocalDate getDate() {
+        return this.date;
+    }
+
+    public Job date(LocalDate date) {
+        this.setDate(date);
+        return this;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public UUID getCode() {
+        return this.code;
+    }
+
+    public Job code(UUID code) {
+        this.setCode(code);
+        return this;
+    }
+
+    public void setCode(UUID code) {
+        this.code = code;
+    }
+
+    public byte[] getProfil() {
+        return this.profil;
+    }
+
+    public Job profil(byte[] profil) {
+        this.setProfil(profil);
+        return this;
+    }
+
+    public void setProfil(byte[] profil) {
+        this.profil = profil;
+    }
+
+    public String getProfilContentType() {
+        return this.profilContentType;
+    }
+
+    public Job profilContentType(String profilContentType) {
+        this.profilContentType = profilContentType;
+        return this;
+    }
+
+    public void setProfilContentType(String profilContentType) {
+        this.profilContentType = profilContentType;
     }
 
     public Set<Task> getTasks() {
@@ -163,6 +266,12 @@ public class Job implements Serializable {
             ", jobTitle='" + getJobTitle() + "'" +
             ", minSalary=" + getMinSalary() +
             ", maxSalary=" + getMaxSalary() +
+            ", subSalary=" + getSubSalary() +
+            ", totalSalary=" + getTotalSalary() +
+            ", date='" + getDate() + "'" +
+            ", code='" + getCode() + "'" +
+            ", profil='" + getProfil() + "'" +
+            ", profilContentType='" + getProfilContentType() + "'" +
             "}";
     }
 }

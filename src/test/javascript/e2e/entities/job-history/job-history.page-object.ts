@@ -35,6 +35,7 @@ export class JobHistoryUpdatePage {
   languageSelect = element(by.id('field_language'));
   fileInput = element(by.id('file_file'));
   dateInput = element(by.id('field_date'));
+  durationInput = element(by.id('field_duration'));
 
   jobSelect = element(by.id('field_job'));
   departmentSelect = element(by.id('field_department'));
@@ -94,6 +95,14 @@ export class JobHistoryUpdatePage {
 
   async getDateInput(): Promise<string> {
     return await this.dateInput.getAttribute('value');
+  }
+
+  async setDurationInput(duration: string): Promise<void> {
+    await this.durationInput.sendKeys(duration);
+  }
+
+  async getDurationInput(): Promise<string> {
+    return await this.durationInput.getAttribute('value');
   }
 
   async jobSelectLastOption(): Promise<void> {

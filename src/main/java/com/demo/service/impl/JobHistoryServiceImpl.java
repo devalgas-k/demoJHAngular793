@@ -63,6 +63,9 @@ public class JobHistoryServiceImpl implements JobHistoryService {
                 if (jobHistory.getDate() != null) {
                     existingJobHistory.setDate(jobHistory.getDate());
                 }
+                if (jobHistory.getDuration() != null) {
+                    existingJobHistory.setDuration(jobHistory.getDuration());
+                }
 
                 return existingJobHistory;
             })

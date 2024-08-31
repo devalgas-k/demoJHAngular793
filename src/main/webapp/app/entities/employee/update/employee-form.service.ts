@@ -40,6 +40,8 @@ type EmployeeFormGroupContent = {
   commissionPct: FormControl<EmployeeFormRawValue['commissionPct']>;
   level: FormControl<EmployeeFormRawValue['level']>;
   contract: FormControl<EmployeeFormRawValue['contract']>;
+  cv: FormControl<EmployeeFormRawValue['cv']>;
+  cvContentType: FormControl<EmployeeFormRawValue['cvContentType']>;
   manager: FormControl<EmployeeFormRawValue['manager']>;
   department: FormControl<EmployeeFormRawValue['department']>;
 };
@@ -74,6 +76,8 @@ export class EmployeeFormService {
         validators: [Validators.min(20), Validators.max(100)],
       }),
       contract: new FormControl(employeeRawValue.contract),
+      cv: new FormControl(employeeRawValue.cv),
+      cvContentType: new FormControl(employeeRawValue.cvContentType),
       manager: new FormControl(employeeRawValue.manager),
       department: new FormControl(employeeRawValue.department),
     });

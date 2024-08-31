@@ -1,13 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
+import { DATE_FORMAT } from 'app/config/input.constants';
 import { IJob } from '../job.model';
 import { sampleWithRequiredData, sampleWithNewData, sampleWithPartialData, sampleWithFullData } from '../job.test-samples';
 
-import { JobService } from './job.service';
+import { JobService, RestJob } from './job.service';
 
-const requireRestSample: IJob = {
+const requireRestSample: RestJob = {
   ...sampleWithRequiredData,
+  date: sampleWithRequiredData.date?.format(DATE_FORMAT),
 };
 
 describe('Job Service', () => {

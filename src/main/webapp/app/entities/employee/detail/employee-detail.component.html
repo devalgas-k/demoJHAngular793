@@ -52,6 +52,13 @@
         <dd>
           <span jhiTranslate="{{ 'demoApp.Contract.' + employee.contract }}">{{ employee.contract }}</span>
         </dd>
+        <dt><span jhiTranslate="demoApp.employee.cv">Cv</span></dt>
+        <dd>
+          <div *ngIf="employee.cv">
+            <a (click)="openFile(employee.cv, employee.cvContentType)" jhiTranslate="entity.action.open">Ouvrir</a>
+            {{ employee.cvContentType }}, {{ byteSize(employee.cv) }}
+          </div>
+        </dd>
         <dt><span jhiTranslate="demoApp.employee.manager">Manager</span></dt>
         <dd>
           <div *ngIf="employee.manager">

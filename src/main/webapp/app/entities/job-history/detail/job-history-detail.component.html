@@ -37,6 +37,10 @@
         <dd>
           <span>{{ jobHistory.date | formatMediumDatetime }}</span>
         </dd>
+        <dt><span jhiTranslate="demoApp.jobHistory.duration">Duration</span></dt>
+        <dd>
+          <span>{{ jobHistory.duration | duration }} ({{ jobHistory.duration }})</span>
+        </dd>
         <dt><span jhiTranslate="demoApp.jobHistory.job">Job</span></dt>
         <dd>
           <div *ngIf="jobHistory.job">

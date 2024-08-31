@@ -1,13 +1,26 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import dayjs from 'dayjs/esm';
 
 import { isPresent } from 'app/core/util/operators';
+import { DATE_FORMAT } from 'app/config/input.constants';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
 import { createRequestOption } from 'app/core/request/request-util';
 import { IJob, NewJob } from '../job.model';
 
 export type PartialUpdateJob = Partial<IJob> & Pick<IJob, 'id'>;
+
+type RestOf<T extends IJob | NewJob> = Omit<T, 'date'> & {
+  date?: string | null;
+};
+
+export type RestJob = RestOf<IJob>;
+
+export type NewRestJob = RestOf<NewJob>;
+
+export type PartialUpdateRestJob = RestOf<PartialUpdateJob>;
 
 export type EntityResponseType = HttpResponse<IJob>;
 export type EntityArrayResponseType = HttpResponse<IJob[]>;
@@ -19,24 +32,35 @@ export class JobService {
   constructor(protected http: HttpClient, protected applicationConfigService: ApplicationConfigService) {}
 
   create(job: NewJob): Observable<EntityResponseType> {
-    return this.http.post<IJob>(this.resourceUrl, job, { observe: 'response' });
+    const copy = this.convertDateFromClient(job);
+    return this.http.post<RestJob>(this.resourceUrl, copy, { observe: 'response' }).pipe(map(res => this.convertResponseFromServer(res)));
   }
 
   update(job: IJob): Observable<EntityResponseType> {
-    return this.http.put<IJob>(`${this.resourceUrl}/${this.getJobIdentifier(job)}`, job, { observe: 'response' });
+    const copy = this.convertDateFromClient(job);
+    return this.http
+      .put<RestJob>(`${this.resourceUrl}/${this.getJobIdentifier(job)}`, copy, { observe: 'response' })
+      .pipe(map(res => this.convertResponseFromServer(res)));
   }
 
   partialUpdate(job: PartialUpdateJob): Observable<EntityResponseType> {
-    return this.http.patch<IJob>(`${this.resourceUrl}/${this.getJobIdentifier(job)}`, job, { observe: 'response' });
+    const copy = this.convertDateFromClient(job);
+    return this.http
+      .patch<RestJob>(`${this.resourceUrl}/${this.getJobIdentifier(job)}`, copy, { observe: 'response' })
+      .pipe(map(res => this.convertResponseFromServer(res)));
   }
 
   find(id: number): Observable<EntityResponseType> {
-    return this.http.get<IJob>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    return this.http
+      .get<RestJob>(`${this.resourceUrl}/${id}`, { observe: 'response' })
+      .pipe(map(res => this.convertResponseFromServer(res)));
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {
     const options = createRequestOption(req);
-    return this.http.get<IJob[]>(this.resourceUrl, { params: options, observe: 'response' });
+    return this.http
+      .get<RestJob[]>(this.resourceUrl, { params: options, observe: 'response' })
+      .pipe(map(res => this.convertResponseArrayFromServer(res)));
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
@@ -66,5 +90,31 @@ export class JobService {
       return [...jobsToAdd, ...jobCollection];
     }
     return jobCollection;
+  }
+
+  protected convertDateFromClient<T extends IJob | NewJob | PartialUpdateJob>(job: T): RestOf<T> {
+    return {
+      ...job,
+      date: job.date?.format(DATE_FORMAT) ?? null,
+    };
+  }
+
+  protected convertDateFromServer(restJob: RestJob): IJob {
+    return {
+      ...restJob,
+      date: restJob.date ? dayjs(restJob.date) : undefined,
+    };
+  }
+
+  protected convertResponseFromServer(res: HttpResponse<RestJob>): HttpResponse<IJob> {
+    return res.clone({
+      body: res.body ? this.convertDateFromServer(res.body) : null,
+    });
+  }
+
+  protected convertResponseArrayFromServer(res: HttpResponse<RestJob[]>): HttpResponse<IJob[]> {
+    return res.clone({
+      body: res.body ? res.body.map(item => this.convertDateFromServer(item)) : null,
+    });
   }
 }

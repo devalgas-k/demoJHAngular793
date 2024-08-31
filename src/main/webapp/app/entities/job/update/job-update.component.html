@@ -16,6 +16,15 @@
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="demoApp.job.jobTitle" for="field_jobTitle">Job Title</label>
           <input type="text" class="form-control" name="jobTitle" id="field_jobTitle" data-cy="jobTitle" formControlName="jobTitle" />
+          <div *ngIf="editForm.get('jobTitle')!.invalid && (editForm.get('jobTitle')!.dirty || editForm.get('jobTitle')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('jobTitle')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              Ce champ est obligatoire.
+            </small>
+          </div>
         </div>
 
         <div class="row mb-3">
@@ -26,6 +35,88 @@
         <div class="row mb-3">
           <label class="form-label" jhiTranslate="demoApp.job.maxSalary" for="field_maxSalary">Max Salary</label>
           <input type="number" class="form-control" name="maxSalary" id="field_maxSalary" data-cy="maxSalary" formControlName="maxSalary" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.job.subSalary" for="field_subSalary">Sub Salary</label>
+          <input type="number" class="form-control" name="subSalary" id="field_subSalary" data-cy="subSalary" formControlName="subSalary" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.job.totalSalary" for="field_totalSalary">Total Salary</label>
+          <input
+            type="number"
+            class="form-control"
+            name="totalSalary"
+            id="field_totalSalary"
+            data-cy="totalSalary"
+            formControlName="totalSalary"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.job.date" for="field_date">Date</label>
+          <div class="input-group">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="text"
+              class="form-control"
+              name="date"
+              ngbDatepicker
+              #dateDp="ngbDatepicker"
+              formControlName="date"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.job.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="demoApp.job.profil" for="field_profil">Profil</label>
+          <div>
+            <img
+              [src]="'data:' + editForm.get('profilContentType')!.value + ';base64,' + editForm.get('profil')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('profil')!.value"
+              alt="job image"
+            />
+            <div *ngIf="editForm.get('profil')!.value" class="form-text text-danger clearfix">
+              <span class="pull-start">{{ editForm.get('profilContentType')!.value }}, {{ byteSize(editForm.get('profil')!.value!) }}</span>
+              <button
+                type="button"
+                (click)="clearInputImage('profil', 'profilContentType', 'file_profil')"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_profil"
+              data-cy="profil"
+              (change)="setFileData($event, 'profil', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="profil" id="field_profil" data-cy="profil" formControlName="profil" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="profilContentType"
+            id="field_profilContentType"
+            formControlName="profilContentType"
+          />
+          <div *ngIf="editForm.get('profil')!.invalid && (editForm.get('profil')!.dirty || editForm.get('profil')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('profil')?.errors?.required" jhiTranslate="entity.validation.required">
+              Ce champ est obligatoire.
+            </small>
+          </div>
         </div>
 
         <div class="row mb-3">

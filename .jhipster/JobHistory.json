@@ -26,6 +26,10 @@
     {
       "fieldName": "date",
       "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "duration",
+      "fieldType": "Duration"
     }
   ],
   "fluentMethods": true,

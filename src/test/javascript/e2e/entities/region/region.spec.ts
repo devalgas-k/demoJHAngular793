@@ -42,7 +42,7 @@ describe('Region e2e test', () => {
 
     await regionComponentsPage.clickOnCreateButton();
 
-    await promise.all([regionUpdatePage.setRegionNameInput('regionName')]);
+    await promise.all([regionUpdatePage.setRegionNameInput('Mixk3')]);
 
     await regionUpdatePage.save();
     expect(await regionUpdatePage.getSaveButton().isPresent(), 'Expected save button disappear').to.be.false;

@@ -3,6 +3,7 @@ package com.demo.domain;
 import com.demo.domain.enumeration.Language;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.ZonedDateTime;
 import javax.persistence.*;
@@ -45,6 +46,9 @@ public class JobHistory implements Serializable {
 
     @Column(name = "date")
     private ZonedDateTime date;
+
+    @Column(name = "duration")
+    private Duration duration;
 
     @JsonIgnoreProperties(value = { "tasks", "employee" }, allowSetters = true)
     @OneToOne
@@ -154,6 +158,19 @@ public class JobHistory implements Serializable {
         this.date = date;
     }
 
+    public Duration getDuration() {
+        return this.duration;
+    }
+
+    public JobHistory duration(Duration duration) {
+        this.setDuration(duration);
+        return this;
+    }
+
+    public void setDuration(Duration duration) {
+        this.duration = duration;
+    }
+
     public Job getJob() {
         return this.job;
     }
@@ -223,6 +240,7 @@ public class JobHistory implements Serializable {
             ", file='" + getFile() + "'" +
             ", fileContentType='" + getFileContentType() + "'" +
             ", date='" + getDate() + "'" +
+            ", duration='" + getDuration() + "'" +
             "}";
     }
 }

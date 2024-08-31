@@ -15,7 +15,7 @@ describe('Job e2e test', () => {
   const jobPageUrlPattern = new RegExp('/job(\\?.*)?$');
   const username = Cypress.env('E2E_USERNAME') ?? 'user';
   const password = Cypress.env('E2E_PASSWORD') ?? 'user';
-  const jobSample = {};
+  const jobSample = { jobTitle: 'b c Stagiaire', profil: 'Li4vZmFrZS1kYXRhL2Jsb2IvaGlwc3Rlci5wbmc=', profilContentType: 'unknown' };
 
   let job;
 
@@ -166,6 +166,21 @@ describe('Job e2e test', () => {
 
       cy.get(`[data-cy="maxSalary"]`).type('89671').should('have.value', '89671');
 
+      cy.get(`[data-cy="subSalary"]`).type('20946').should('have.value', '20946');
+
+      cy.get(`[data-cy="totalSalary"]`).type('53473').should('have.value', '53473');
+
+      cy.get(`[data-cy="date"]`).type('2024-08-30').blur().should('have.value', '2024-08-30');
+
+      cy.get(`[data-cy="code"]`)
+        .type('f2e1e10e-9a6f-44a0-9fd3-765df8ca55dd')
+        .invoke('val')
+        .should('match', new RegExp('f2e1e10e-9a6f-44a0-9fd3-765df8ca55dd'));
+
+      cy.setFieldImageAsBytesOfEntity('profil', 'integration-test.png', 'image/png');
+
+      // since cypress clicks submit too fast before the blob fields are validated
+      cy.wait(200); // eslint-disable-line cypress/no-unnecessary-waiting
       cy.get(entityCreateSaveButtonSelector).click();
 
       cy.wait('@postEntityRequest').then(({ response }) => {

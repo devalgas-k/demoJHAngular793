@@ -52,6 +52,7 @@ describe('JobHistory e2e test', () => {
       jobHistoryUpdatePage.languageSelectLastOption(),
       jobHistoryUpdatePage.setFileInput(absolutePath),
       jobHistoryUpdatePage.setDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
+      jobHistoryUpdatePage.setDurationInput('PT12S'),
       jobHistoryUpdatePage.jobSelectLastOption(),
       jobHistoryUpdatePage.departmentSelectLastOption(),
       jobHistoryUpdatePage.employeeSelectLastOption(),

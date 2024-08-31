@@ -8,6 +8,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -52,7 +54,7 @@ public class JobResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/jobs")
-    public ResponseEntity<Job> createJob(@RequestBody Job job) throws URISyntaxException {
+    public ResponseEntity<Job> createJob(@Valid @RequestBody Job job) throws URISyntaxException {
         log.debug("REST request to save Job : {}", job);
         if (job.getId() != null) {
             throw new BadRequestAlertException("A new job cannot already have an ID", ENTITY_NAME, "idexists");
@@ -75,7 +77,7 @@ public class JobResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/jobs/{id}")
-    public ResponseEntity<Job> updateJob(@PathVariable(value = "id", required = false) final Long id, @RequestBody Job job)
+    public ResponseEntity<Job> updateJob(@PathVariable(value = "id", required = false) final Long id, @Valid @RequestBody Job job)
         throws URISyntaxException {
         log.debug("REST request to update Job : {}, {}", id, job);
         if (job.getId() == null) {
@@ -108,7 +110,7 @@ public class JobResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PatchMapping(value = "/jobs/{id}", consumes = { "application/json", "application/merge-patch+json" })
-    public ResponseEntity<Job> partialUpdateJob(@PathVariable(value = "id", required = false) final Long id, @RequestBody Job job)
+    public ResponseEntity<Job> partialUpdateJob(@PathVariable(value = "id", required = false) final Long id, @NotNull @RequestBody Job job)
         throws URISyntaxException {
         log.debug("REST request to partial update Job partially : {}, {}", id, job);
         if (job.getId() == null) {
@@ -133,6 +135,24 @@ public class JobResource {
                 }
                 if (job.getMaxSalary() != null) {
                     existingJob.setMaxSalary(job.getMaxSalary());
+                }
+                if (job.getSubSalary() != null) {
+                    existingJob.setSubSalary(job.getSubSalary());
+                }
+                if (job.getTotalSalary() != null) {
+                    existingJob.setTotalSalary(job.getTotalSalary());
+                }
+                if (job.getDate() != null) {
+                    existingJob.setDate(job.getDate());
+                }
+                if (job.getCode() != null) {
+                    existingJob.setCode(job.getCode());
+                }
+                if (job.getProfil() != null) {
+                    existingJob.setProfil(job.getProfil());
+                }
+                if (job.getProfilContentType() != null) {
+                    existingJob.setProfilContentType(job.getProfilContentType());
                 }
 
                 return existingJob;

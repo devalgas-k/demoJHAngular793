@@ -33,6 +33,11 @@ export class JobUpdatePage {
   jobTitleInput = element(by.id('field_jobTitle'));
   minSalaryInput = element(by.id('field_minSalary'));
   maxSalaryInput = element(by.id('field_maxSalary'));
+  subSalaryInput = element(by.id('field_subSalary'));
+  totalSalaryInput = element(by.id('field_totalSalary'));
+  dateInput = element(by.id('field_date'));
+  codeInput = element(by.id('field_code'));
+  profilInput = element(by.id('file_profil'));
 
   taskSelect = element(by.id('field_task'));
   employeeSelect = element(by.id('field_employee'));
@@ -71,6 +76,46 @@ export class JobUpdatePage {
 
   async getMaxSalaryInput(): Promise<string> {
     return await this.maxSalaryInput.getAttribute('value');
+  }
+
+  async setSubSalaryInput(subSalary: string): Promise<void> {
+    await this.subSalaryInput.sendKeys(subSalary);
+  }
+
+  async getSubSalaryInput(): Promise<string> {
+    return await this.subSalaryInput.getAttribute('value');
+  }
+
+  async setTotalSalaryInput(totalSalary: string): Promise<void> {
+    await this.totalSalaryInput.sendKeys(totalSalary);
+  }
+
+  async getTotalSalaryInput(): Promise<string> {
+    return await this.totalSalaryInput.getAttribute('value');
+  }
+
+  async setDateInput(date: string): Promise<void> {
+    await this.dateInput.sendKeys(date);
+  }
+
+  async getDateInput(): Promise<string> {
+    return await this.dateInput.getAttribute('value');
+  }
+
+  async setCodeInput(code: string): Promise<void> {
+    await this.codeInput.sendKeys(code);
+  }
+
+  async getCodeInput(): Promise<string> {
+    return await this.codeInput.getAttribute('value');
+  }
+
+  async setProfilInput(profil: string): Promise<void> {
+    await this.profilInput.sendKeys(profil);
+  }
+
+  async getProfilInput(): Promise<string> {
+    return await this.profilInput.getAttribute('value');
   }
 
   async taskSelectLastOption(): Promise<void> {

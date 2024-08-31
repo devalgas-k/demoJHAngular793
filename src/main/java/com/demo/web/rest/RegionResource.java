@@ -9,6 +9,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,7 +50,7 @@ public class RegionResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/regions")
-    public ResponseEntity<Region> createRegion(@RequestBody Region region) throws URISyntaxException {
+    public ResponseEntity<Region> createRegion(@Valid @RequestBody Region region) throws URISyntaxException {
         log.debug("REST request to save Region : {}", region);
         if (region.getId() != null) {
             throw new BadRequestAlertException("A new region cannot already have an ID", ENTITY_NAME, "idexists");
@@ -71,8 +73,10 @@ public class RegionResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PutMapping("/regions/{id}")
-    public ResponseEntity<Region> updateRegion(@PathVariable(value = "id", required = false) final Long id, @RequestBody Region region)
-        throws URISyntaxException {
+    public ResponseEntity<Region> updateRegion(
+        @PathVariable(value = "id", required = false) final Long id,
+        @Valid @RequestBody Region region
+    ) throws URISyntaxException {
         log.debug("REST request to update Region : {}, {}", id, region);
         if (region.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
@@ -106,7 +110,7 @@ public class RegionResource {
     @PatchMapping(value = "/regions/{id}", consumes = { "application/json", "application/merge-patch+json" })
     public ResponseEntity<Region> partialUpdateRegion(
         @PathVariable(value = "id", required = false) final Long id,
-        @RequestBody Region region
+        @NotNull @RequestBody Region region
     ) throws URISyntaxException {
         log.debug("REST request to partial update Region partially : {}, {}", id, region);
         if (region.getId() == null) {

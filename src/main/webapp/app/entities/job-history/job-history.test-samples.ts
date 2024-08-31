@@ -9,21 +9,23 @@ export const sampleWithRequiredData: IJobHistory = {
 };
 
 export const sampleWithPartialData: IJobHistory = {
-  id: 71556,
-  endDate: dayjs('2024-08-31T02:37'),
+  id: 7757,
+  endDate: dayjs('2024-08-30T10:28'),
   file: '../fake-data/blob/hipster.png',
   fileContentType: 'unknown',
-  date: dayjs('2024-08-30T10:28'),
+  date: dayjs('2024-08-30T05:28'),
+  duration: '20263',
 };
 
 export const sampleWithFullData: IJobHistory = {
-  id: 95879,
-  startDate: dayjs('2024-08-30T23:37'),
-  endDate: dayjs('2024-08-30T08:06'),
+  id: 84891,
+  startDate: dayjs('2024-08-30T11:29'),
+  endDate: dayjs('2024-08-30T09:47'),
   language: Language['SPANISH'],
   file: '../fake-data/blob/hipster.png',
   fileContentType: 'unknown',
-  date: dayjs('2024-08-30T09:47'),
+  date: dayjs('2024-08-30T20:25'),
+  duration: '4181',
 };
 
 export const sampleWithNewData: NewJobHistory = {

@@ -25,6 +25,10 @@
     <include file="config/liquibase/changelog/20240831042922_added_entity_Employee.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240831042923_added_entity_Job.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240831042924_added_entity_JobHistory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240831044447_added_entity_Expertise.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240831044448_added_entity_Experience.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240831044449_added_entity_Message.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240831044450_added_entity_Subject.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20240831042918_added_entity_constraints_Country.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240831042919_added_entity_constraints_Location.xml" relativeToChangelogFile="false"/>
@@ -32,6 +36,8 @@
     <include file="config/liquibase/changelog/20240831042922_added_entity_constraints_Employee.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240831042923_added_entity_constraints_Job.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20240831042924_added_entity_constraints_JobHistory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240831044448_added_entity_constraints_Experience.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240831044449_added_entity_constraints_Message.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

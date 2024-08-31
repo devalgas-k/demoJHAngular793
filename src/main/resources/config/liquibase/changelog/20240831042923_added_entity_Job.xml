@@ -15,13 +15,31 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="job_title" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_job__job_title" />
             </column>
-            <column name="min_salary" type="bigint">
+            <column name="min_salary" type="decimal(21,2)">
                 <constraints nullable="true" />
             </column>
             <column name="max_salary" type="bigint">
                 <constraints nullable="true" />
+            </column>
+            <column name="sub_salary" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="total_salary" type="double">
+                <constraints nullable="true" />
+            </column>
+            <column name="date" type="date">
+                <constraints nullable="true" />
+            </column>
+            <column name="code" type="${uuidType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="profil" type="${blobType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="profil_content_type" type="varchar(255)">
+                <constraints nullable="false" />
             </column>
             <column name="employee_id" type="bigint">
                 <constraints nullable="true" />
@@ -64,6 +82,12 @@
             <column name="job_title" type="string"/>
             <column name="min_salary" type="numeric"/>
             <column name="max_salary" type="numeric"/>
+            <column name="sub_salary" type="numeric"/>
+            <column name="total_salary" type="numeric"/>
+            <column name="date" type="date"/>
+            <column name="code" type="${uuidType}"/>
+            <column name="profil" type="blob"/>
+            <column name="profil_content_type" type="string"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

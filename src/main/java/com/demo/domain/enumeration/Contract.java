@@ -4,8 +4,8 @@ package com.demo.domain.enumeration;
  * This is a contract\ncontract am enum
  */
 public enum Contract {
-    CDI,
-    CDD,
+    CDI("Permanent employment contract"),
+    CDD("FIXED-TERM CONTRACT"),
     FREELANCE("Freelance");
 
     private final String value;

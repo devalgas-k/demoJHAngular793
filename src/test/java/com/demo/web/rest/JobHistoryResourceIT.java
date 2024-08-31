@@ -10,6 +10,7 @@ import com.demo.IntegrationTest;
 import com.demo.domain.JobHistory;
 import com.demo.domain.enumeration.Language;
 import com.demo.repository.JobHistoryRepository;
+import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -54,6 +55,9 @@ class JobHistoryResourceIT {
     private static final ZonedDateTime DEFAULT_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
+    private static final Duration DEFAULT_DURATION = Duration.ofHours(6);
+    private static final Duration UPDATED_DURATION = Duration.ofHours(12);
+
     private static final String ENTITY_API_URL = "/api/job-histories";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -84,7 +88,8 @@ class JobHistoryResourceIT {
             .language(DEFAULT_LANGUAGE)
             .file(DEFAULT_FILE)
             .fileContentType(DEFAULT_FILE_CONTENT_TYPE)
-            .date(DEFAULT_DATE);
+            .date(DEFAULT_DATE)
+            .duration(DEFAULT_DURATION);
         return jobHistory;
     }
 
@@ -101,7 +106,8 @@ class JobHistoryResourceIT {
             .language(UPDATED_LANGUAGE)
             .file(UPDATED_FILE)
             .fileContentType(UPDATED_FILE_CONTENT_TYPE)
-            .date(UPDATED_DATE);
+            .date(UPDATED_DATE)
+            .duration(UPDATED_DURATION);
         return jobHistory;
     }
 
@@ -129,6 +135,7 @@ class JobHistoryResourceIT {
         assertThat(testJobHistory.getFile()).isEqualTo(DEFAULT_FILE);
         assertThat(testJobHistory.getFileContentType()).isEqualTo(DEFAULT_FILE_CONTENT_TYPE);
         assertThat(testJobHistory.getDate()).isEqualTo(DEFAULT_DATE);
+        assertThat(testJobHistory.getDuration()).isEqualTo(DEFAULT_DURATION);
     }
 
     @Test
@@ -166,7 +173,8 @@ class JobHistoryResourceIT {
             .andExpect(jsonPath("$.[*].language").value(hasItem(DEFAULT_LANGUAGE.toString())))
             .andExpect(jsonPath("$.[*].fileContentType").value(hasItem(DEFAULT_FILE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].file").value(hasItem(Base64Utils.encodeToString(DEFAULT_FILE))))
-            .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))));
+            .andExpect(jsonPath("$.[*].date").value(hasItem(sameInstant(DEFAULT_DATE))))
+            .andExpect(jsonPath("$.[*].duration").value(hasItem(DEFAULT_DURATION.toString())));
     }
 
     @Test
@@ -186,7 +194,8 @@ class JobHistoryResourceIT {
             .andExpect(jsonPath("$.language").value(DEFAULT_LANGUAGE.toString()))
             .andExpect(jsonPath("$.fileContentType").value(DEFAULT_FILE_CONTENT_TYPE))
             .andExpect(jsonPath("$.file").value(Base64Utils.encodeToString(DEFAULT_FILE)))
-            .andExpect(jsonPath("$.date").value(sameInstant(DEFAULT_DATE)));
+            .andExpect(jsonPath("$.date").value(sameInstant(DEFAULT_DATE)))
+            .andExpect(jsonPath("$.duration").value(DEFAULT_DURATION.toString()));
     }
 
     @Test
@@ -214,7 +223,8 @@ class JobHistoryResourceIT {
             .language(UPDATED_LANGUAGE)
             .file(UPDATED_FILE)
             .fileContentType(UPDATED_FILE_CONTENT_TYPE)
-            .date(UPDATED_DATE);
+            .date(UPDATED_DATE)
+            .duration(UPDATED_DURATION);
 
         restJobHistoryMockMvc
             .perform(
@@ -234,6 +244,7 @@ class JobHistoryResourceIT {
         assertThat(testJobHistory.getFile()).isEqualTo(UPDATED_FILE);
         assertThat(testJobHistory.getFileContentType()).isEqualTo(UPDATED_FILE_CONTENT_TYPE);
         assertThat(testJobHistory.getDate()).isEqualTo(UPDATED_DATE);
+        assertThat(testJobHistory.getDuration()).isEqualTo(UPDATED_DURATION);
     }
 
     @Test
@@ -304,7 +315,7 @@ class JobHistoryResourceIT {
         JobHistory partialUpdatedJobHistory = new JobHistory();
         partialUpdatedJobHistory.setId(jobHistory.getId());
 
-        partialUpdatedJobHistory.date(UPDATED_DATE);
+        partialUpdatedJobHistory.date(UPDATED_DATE).duration(UPDATED_DURATION);
 
         restJobHistoryMockMvc
             .perform(
@@ -324,6 +335,7 @@ class JobHistoryResourceIT {
         assertThat(testJobHistory.getFile()).isEqualTo(DEFAULT_FILE);
         assertThat(testJobHistory.getFileContentType()).isEqualTo(DEFAULT_FILE_CONTENT_TYPE);
         assertThat(testJobHistory.getDate()).isEqualTo(UPDATED_DATE);
+        assertThat(testJobHistory.getDuration()).isEqualTo(UPDATED_DURATION);
     }
 
     @Test
@@ -344,7 +356,8 @@ class JobHistoryResourceIT {
             .language(UPDATED_LANGUAGE)
             .file(UPDATED_FILE)
             .fileContentType(UPDATED_FILE_CONTENT_TYPE)
-            .date(UPDATED_DATE);
+            .date(UPDATED_DATE)
+            .duration(UPDATED_DURATION);
 
         restJobHistoryMockMvc
             .perform(
@@ -364,6 +377,7 @@ class JobHistoryResourceIT {
         assertThat(testJobHistory.getFile()).isEqualTo(UPDATED_FILE);
         assertThat(testJobHistory.getFileContentType()).isEqualTo(UPDATED_FILE_CONTENT_TYPE);
         assertThat(testJobHistory.getDate()).isEqualTo(UPDATED_DATE);
+        assertThat(testJobHistory.getDuration()).isEqualTo(UPDATED_DURATION);
     }
 
     @Test

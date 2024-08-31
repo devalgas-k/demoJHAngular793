@@ -15,6 +15,10 @@
         "employee": "Employee",
         "job": "Job",
         "jobHistory": "Job History",
+        "expertise": "Expertise",
+        "experience": "Experience",
+        "message": "Message",
+        "subject": "Subject",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

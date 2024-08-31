@@ -97,7 +97,7 @@ entity JobHistory {
  * contract am enum
  */
 enum Contract {
-    CDI("CDI"), CDD("CDD"), FREELANCE("Freelance")
+    CDI("Permanent employment contract"), CDD("FIXED-TERM CONTRACTa"), FREELANCE("Freelance")
 }
 
 enum Language {

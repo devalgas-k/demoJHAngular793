@@ -7,7 +7,9 @@
   "fields": [
     {
       "fieldName": "regionName",
-      "fieldType": "String"
+      "fieldType": "String",
+      "fieldValidateRules": ["pattern"],
+      "fieldValidateRulesPattern": "^[A-Z][a-z]+\\d$"
     }
   ],
   "fluentMethods": true,

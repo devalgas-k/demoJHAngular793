@@ -2,6 +2,7 @@ package com.demo.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -22,6 +23,7 @@ public class Region implements Serializable {
     @Column(name = "id")
     private Long id;
 
+    @Pattern(regexp = "^[A-Z][a-z]+\\d$")
     @Column(name = "region_name")
     private String regionName;
 

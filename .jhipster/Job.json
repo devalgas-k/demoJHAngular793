@@ -7,15 +7,38 @@
   "fields": [
     {
       "fieldName": "jobTitle",
-      "fieldType": "String"
+      "fieldType": "String",
+      "fieldValidateRules": ["unique", "required"]
     },
     {
       "fieldName": "minSalary",
-      "fieldType": "Long"
+      "fieldType": "BigDecimal"
     },
     {
       "fieldName": "maxSalary",
       "fieldType": "Long"
+    },
+    {
+      "fieldName": "subSalary",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "totalSalary",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "UUID"
+    },
+    {
+      "fieldName": "profil",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image",
+      "fieldValidateRules": ["required"]
     }
   ],
   "fluentMethods": true,

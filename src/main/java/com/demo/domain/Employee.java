@@ -66,6 +66,13 @@ public class Employee implements Serializable {
     @Column(name = "contract")
     private Contract contract;
 
+    @Lob
+    @Column(name = "cv")
+    private byte[] cv;
+
+    @Column(name = "cv_content_type")
+    private String cvContentType;
+
     @OneToMany(mappedBy = "employee")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JsonIgnoreProperties(value = { "tasks", "employee" }, allowSetters = true)
@@ -215,6 +222,32 @@ public class Employee implements Serializable {
         this.contract = contract;
     }
 
+    public byte[] getCv() {
+        return this.cv;
+    }
+
+    public Employee cv(byte[] cv) {
+        this.setCv(cv);
+        return this;
+    }
+
+    public void setCv(byte[] cv) {
+        this.cv = cv;
+    }
+
+    public String getCvContentType() {
+        return this.cvContentType;
+    }
+
+    public Employee cvContentType(String cvContentType) {
+        this.cvContentType = cvContentType;
+        return this;
+    }
+
+    public void setCvContentType(String cvContentType) {
+        this.cvContentType = cvContentType;
+    }
+
     public Set<Job> getJobs() {
         return this.jobs;
     }
@@ -305,6 +338,8 @@ public class Employee implements Serializable {
             ", commissionPct=" + getCommissionPct() +
             ", level=" + getLevel() +
             ", contract='" + getContract() + "'" +
+            ", cv='" + getCv() + "'" +
+            ", cvContentType='" + getCvContentType() + "'" +
             "}";
     }
 }
