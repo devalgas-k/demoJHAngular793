@@ -1,0 +1,182 @@
+
+entity Region {
+	regionName String pattern(/^[A-Z][a-z]+\d$/)
+}
+
+entity Country {
+	countryName String
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Location {
+	streetAddress String
+	postalCode String
+	city String
+	stateProvince String
+}
+
+entity Department {
+	departmentName String required
+}
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity Task {
+    title String maxlength(256) required pattern(/^[A-Z].*$/)
+    description TextBlob
+}
+
+/**
+ * This is a expertise
+ * expertise a class
+ * @author Devalgas
+ */
+entity Expertise {
+    title String maxlength(256) required pattern(/^[A-Z].*$/)
+    description TextBlob
+    level Integer min(20) max(100)
+}
+
+entity Experience {
+    title String maxlength(256) required pattern(/^[A-Z].*$/)
+    company String maxlength(256) unique required pattern(/^[A-Z].*$/)
+    description TextBlob
+    logoCompany ImageBlob
+    inProgress Boolean required
+    contract Contract required
+    startDate LocalDate
+    endDate LocalDate
+}
+
+
+/**
+ * The Employee entity.
+ */
+entity Employee {
+	/**
+	* The firstname attribute.
+	*/
+	firstName String
+	lastName String
+    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+	phoneNumber String
+	hireDate Instant
+	salary Long
+	commissionPct Long
+    level Integer min(20) max(100)
+    contract Contract
+    cv AnyBlob
+}
+
+entity Job {
+	jobTitle String unique required
+	minSalary Long required
+	maxSalary Long
+    minSalary BigDecimal
+    subSalary Float
+    totalSalary Double
+    date LocalDate
+    code UUID
+    profil ImageBlob required
+}
+
+entity JobHistory {
+	startDate Instant
+	endDate Instant
+	language Language
+    file AnyBlob
+    date ZonedDateTime
+    duration Duration
+}
+
+/**
+ * This is a contract
+ * contract am enum
+ */
+enum Contract {
+    CDI("CDI"), CDD("CDD"), FREELANCE("Freelance")
+}
+
+enum Language {
+    FRENCH, ENGLISH, SPANISH
+}
+
+relationship OneToOne {
+	Country{region} to Region
+}
+
+relationship OneToOne {
+	Location{country} to Country
+}
+
+relationship OneToOne {
+	Department{location} to Location
+}
+
+relationship ManyToMany {
+	Job{task(title)} to Task{job}
+}
+
+relationship ManyToMany {
+    Experience{expertise(title)} to Expertise{experience(company)}
+}
+
+entity Message {
+    name String maxlength(256) required
+    email String required pattern(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)
+    phone String pattern(/^\+?[0-9]{1,4}?[-.\s]?(\(?\d{1,3}?\)?[-.\s]?)?\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$/)
+    message TextBlob
+    file AnyBlob
+    city String maxlength(256)
+    otherCountry String maxlength(256)
+    date ZonedDateTime
+}
+
+entity Subject {
+    name String maxlength(256) required
+}
+
+
+relationship ManyToOne {
+    Message{subject(name) required} to Subject
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Employee to Job{employee}
+	/**
+	* A relationship
+	*/
+	Department to
+	/**
+	* Another side of the same relationship
+	*/
+	Employee{department}
+}
+
+relationship ManyToOne {
+	Employee{manager} to Employee
+}
+
+// defining multiple oneToOne relationships
+relationship OneToOne {
+	JobHistory{job} to Job
+	JobHistory{department} to Department
+	JobHistory{employee} to Employee
+}
+
+// Set pagination options
+paginate JobHistory, Employee with infinite-scroll
+paginate Job with pagination
+
+// Use Data Transfer Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl except Employee, Job
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
